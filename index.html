@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<title>APA Score Keeper</title>
+	</head>
+	<body>
+		<h1><span id="gameType"></span> Score Keeper</h1>
+		<div class="match-details-container">
+			<div class="match-details-inner">
+                <form id="gamesetupform" action="" method="post">
+                    <div class="gameSelect">
+                        <h2>Select A Game:</h2>
+                        <div class="button-wrapper">
+                            <div class="button">
+                                <input type="radio" name="game-select" id="game-select-8"/>
+                                <label class="btn" for="game-select-8">8-Ball</label>
+                            </div>
+                            <div class="button">
+                                <input type="radio" name="game-select" id="game-select-9"/>
+                                <label class="btn" for="game-select-9">9-Ball</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-race-option">
+                        <h2>Select Race Type:</h2>
+                        <div class="button-wrapper">
+                            <div class="button">
+                                <input type="radio" name="race-option" id="single-race" checked="true">
+                                <label class="btn" for="single-race" >Single Race</label>
+                            </div>
+                            <div class="button">
+                                <input type="radio" name="race-option" id="sl-race">
+                                <label class="btn" for="sl-race" >APA SL Race</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    
+                    <div id="add-players-single">
+                        <h2>Add Players:</h2>
+                        <div class="player-details-form">
+                            <label>Player #1:</label>
+                            <input
+                                type="text"
+                                name="player1-name"
+                                id="single-player1-name"
+                                placeholder="Name"
+                            />
+                        </div>
+                        <div class="player-details-form">
+                            <label>Player #2:</label>
+                            <input
+                                type="text"
+                                name="player2-name"
+                                id="single-player2-name"
+                                placeholder="Name"
+                            />
+                        </div>
+                    </div>
+                    <div class="race-to">
+                        <h2>Race To:</h2>
+                        <label for="raceto">Games:</label>
+                        <input type="number" name="race" id="raceto" placeholder="5">
+                    </div>
+                    <div id="add-players">
+                        <h2>Add Players:</h2>
+                        <div class="player-details-form">
+                            <label>Player #1:</label>
+                            <input
+                                type="text"
+                                name="player1-name"
+                                id="player1-name"
+                                placeholder="Name"
+                            />
+                            <input
+                                type="number"
+                                name="player1-skill-level"
+                                id="player1-skill-level"
+                                placeholder="Skill Level"
+                            />
+                        </div>
+                        <div class="player-details-form">
+                            <label>Player #2:</label>
+                            <input
+                                type="text"
+                                name="player2-name"
+                                id="player2-name"
+                                placeholder="Name"
+                            />
+                            <input
+                                type="number"
+                                name="player2-skill-level"
+                                id="player2-skill-level"
+                                placeholder="Skill Level"
+                            />
+                        </div>
+                    </div>
+                    <div class="lagQ">
+                        <h2>Who breaks first?</h2>
+                        <div class="button-wrapper">
+                            <div class="button">
+                                <input type="radio" id="p1" name="lagwinner" />
+                                <label class="btn" for="p1">Player 1</label>
+                            </div>
+                            <div class="button">
+                                <input type="radio" id="p2" name="lagwinner" />
+                                <label class="btn" for="p2">Player 2</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" id="startmatch">Start Match</button>
+                </form>
+            </div>
+		</div>
+		<!-- .match-details-container -->
+
+		<div id="scoreboard">
+			<div id="player1-details" class="player-details">
+				<div class="playerNum"><span class="player">Player #1</span><span id="p1lag"></span></div>
+				<h3 id="p1name">Player #1</h3>
+				<div class="p1-stats">
+					<div>
+						<p class="hideSingle">SL: <span id="p1sl"></span></p>
+						<p class="hide9andslrace">
+							Race: <span id="p1s">0</span> /
+							<span id="slp1r">0</span>
+						</p>
+						<p class="hideIf8Ball hideSingle">
+							Points: <span id="p1p">0</span> /
+							<span id="slp1p">0</span>
+						</p>
+					</div>
+					<div>
+						<p class="hideSingle">
+							Timeouts: <span id="p1TimeOutCtr">0</span> /
+							<span id="p1TimeoutsAllowed">0</span>
+						</p>
+						<p>Defense: <span id="p1DefenseCtr">0</span></p>
+					</div>
+				</div>
+				<p class="ballsmade">
+					Balls Made:</br> <span id="p1MadeBalls"></span>
+				</p> 
+                <div class="printedBalls">
+                    
+                </div>
+			</div>
+			<div class="scores">
+                <div class="gamenum">
+                    <span id="gamectr"></span>
+                </div>
+				<div class="playerscores">
+					<div class="playerscores hide9andslrace">
+                        <div id="player1-score" class="playerscore">
+                            <span id="p1-score">0</span>
+                        </div>
+                        <div class="playerscoredivider">|</div>
+                        <div id="player2-score" class="playerscore">
+                            <span id="p2-score">0</span>
+                        </div>
+                    </div>
+					<div class="hideIf8Ball playerscores hideSingle">
+                        <!-- if skill level race and 9ball, tracks points -->
+                        <div id="player1-score-slr" class="playerscore">
+                            <span id="p1-score-slr">0</span>
+                        </div>
+                        <div class="playerscoredivider">|</div>
+                        <div id="player2-score-slr" class="playerscore">
+                            <span id="p2-score-slr">0</span>
+                        </div>
+                    </div>
+				</div>
+				<div class="innings">
+					<span>Innings:</span>
+					<span id="inningCtr">0</span>
+				</div>
+                <div class="hideIf8Ball deadballs">
+                    <span>Dead:</span>
+                    <span id="deadballs"></span>
+                    <!-- deadctr<span id="deadctr"></span> -->
+                </div>
+			</div>
+			<div id="player2-details" class="player-details">
+				<div class="playerNum"><span class="player">Player #2</span><span id="p2lag"></span></div>
+				<h3 id="p2name">Player #2</h3>
+				<div class="p2-stats">
+					<div>
+						<p class="hideSingle">SL: <span id="p2sl"></span></p>
+						<p class="hide9andslrace">
+							Race: <span id="p2s">0</span> /
+							<span id="slp2r">0</span>
+						</p>
+                        <p class="hideIf8Ball hideSingle">
+							Points: <span id="p2p">0</span> /
+							<span id="slp2p">0</span>
+						</p>
+					</div>
+					<div>
+						<p class="hideSingle">
+							Timeouts: <span id="p2TimeOutCtr">0</span> /
+							<span id="p2TimeoutsAllowed">0</span>
+						</p>
+						<p>Defense: <span id="p2DefenseCtr">0</span></p>
+					</div>
+				</div>
+				<p class="ballsmade">
+					Balls Made:</br> <span id="p2MadeBalls"></span>
+				</p>
+			</div>
+		</div>
+		<!-- #scoreboard -->
+
+		<div id="winnerAlertMessage"></div>
+
+		<div id="button-container">
+			<div id="buttons">
+				<button id="switch-player" class="btn">Switch Player</button>
+				<button id="defenseBtn" class="btn">Defense</button>
+				<button id="timeOutBtn" class="btn hideSingle">Timeout</button>
+				<!-- <button>Fouls</button> -->
+				<button id="scratch" class="btn">Scratch</button>
+				<button id="dead" class="btn hideIf8Ball">Dead Ball</button>
+				<button id="reset" class="btn">Reset Match</button>
+			</div>
+			<!-- #buttons -->
+			<div id="balls"></div>
+		</div>
+        <div class="gameoverPopup">
+            <div class="gameoverPopupInner">
+                <div class="radio-buttons">
+                    <div> <!-- current player wins  -->
+                        <p style="font-size: small; color:rgb(3, 41, 129);"><span class="currPlayerName"></span> Wins</p>
+                        <div>
+                            <input type="radio" name="gameover" id="currplayerwins" value="Current Player Wins">
+                            <label for="currplayerwins"><span class="currPlayer"><span class="currPlayerName"></span> Wins</span></label><br>
+                        </div>
+                        <div>
+                            <input type="radio" name="gameover" id="breaknRun" value="Break & Run">
+                            <label for="breaknRun">Break & Run</label><br>
+                        </div>
+                        <div class="hideIf9Ball">
+                            <input type="radio" name="gameover" id="eightOnB" value="Made 8-Ball on the Break">
+                            <label for="eightOnB">Made 8-Ball on the Break</label><br>
+                        </div>
+                        <div class="hideIf8Ball">
+                            <input type="radio" name="gameover" id="nineonSnap" value="Made 9-Ball on the Break">
+                            <label for="nineonSnap">Made 9-Ball on the Break</label><br>
+                        </div>
+                    </div> <!-- End current player wins  -->
+                    <div> <!-- Current Player Loses -->
+                        <p class="hideIf9Ball" style="font-size: small; color:rgb(3, 41, 129);"><span class="currPlayerName"></span> Loses</p>
+                        <div class="hideIf9Ball">
+                            <input type="radio" name="gameover" id="early8" value="Made 8-Ball Early">
+                            <label for="early8">Made 8-Ball Early</label><br>
+                        </div>
+                        <div class="hideIf9Ball">
+                            <input type="radio" name="gameover" id="eightwrongpocket" value="Made 8-Ball in wrong pocket">
+                            <label for="eightwrongpocket">Made 8-Ball in wrong pocket</label><br>
+                        </div>
+                        <div class="hideIf9Ball">
+                            <input type="radio" name="gameover" id="scratchon8Ball" value="Scratch on 8-Ball">
+                            <label for="scratchon8Ball">Scratch on 8-Ball</label><br>
+                        </div> 
+                    </div> <!-- End Current Player Loses -->
+                </div> <!-- End .radio-buttons -->
+                <div class="popup-buttons">
+                    <button class="closeGameoverPopup btn">Close</button>
+                    <button class="confirm btn">Confirm</button>
+                </div>
+            </div> <!-- End .gameoverPopupInner -->
+        </div> <!-- End .gameoverPopup -->
+        <div class="gameover">
+            <button id="gameoverBtn">Game Over</button>
+        </div>
+        
+
+		<!-- <div id="skillLevelChart">
+			<h3>8-Ball APA Skill Level Handicap Chart</h3>
+			<table>
+				<tr>
+					<th>SL</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2/2</td>
+					<td>2/3</td>
+					<td>2/4</td>
+					<td>2/5</td>
+					<td>2/6</td>
+					<td>2/7</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>3/2</td>
+					<td>2/2</td>
+					<td>2/3</td>
+					<td>2/4</td>
+					<td>2/5</td>
+					<td>2/6</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>4/2</td>
+					<td>3/2</td>
+					<td>3/3</td>
+					<td>3/4</td>
+					<td>3/5</td>
+					<td>2/5</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>5/2</td>
+					<td>4/2</td>
+					<td>4/3</td>
+					<td>4/4</td>
+					<td>4/5</td>
+					<td>3/5</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>6/2</td>
+					<td>5/2</td>
+					<td>5/3</td>
+					<td>5/4</td>
+					<td>5/5</td>
+					<td>4/5</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>7/2</td>
+					<td>6/2</td>
+					<td>5/2</td>
+					<td>5/3</td>
+					<td>5/4</td>
+					<td>5/5</td>
+				</tr>
+			</table>
+		</div> -->
+		<!-- #skillLevelChart -->
+
+		<!-- <div class="gameHistoryContainer">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th>Race</th>
+						<th>Game 1</th>
+						<th>Game 2</th>
+						<th>Game 3</th>
+						<th>Game 4</th>
+						<th>Game 5</th>
+						<th>Game 6</th>
+						<th>Game 7</th>
+						<th>Game 8</th>
+						<th>Game 9</th>
+						<th class="vertical small">8-Break</th>
+						<th class="vertica smalll">8-B & Run</th>
+						<th class="vertical small">Defense</th>
+						<th class="vertical small">Games Won</th>
+						<th>MP Earned</th>
+						<th>Running Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td rowspan="2">Match 1</td>
+						<td class="playerTable p1name">Player 1</td>
+						<td class="p1race"></td>
+						<td rowspan="2" class="game1">0 Innings</td>
+						<td rowspan="2" class="game2"></td>
+						<td rowspan="2" class="game3"></td>
+						<td rowspan="2" class="game4"></td>
+						<td rowspan="2" class="game5"></td>
+						<td rowspan="2" class="game6"></td>
+						<td rowspan="2" class="game7"></td>
+						<td rowspan="2" class="game8"></td>
+						<td rowspan="2" class="game9"></td>
+						<td class="p18bCtr"></td>
+						<td class="p18brCtr"></td>
+						<td class="p1defCtr"></td>
+						<td class="p1gamesW"></td>
+						<td class="p1mp"></td>
+						<td class="p1rt"></td>
+					</tr>
+					<tr>
+						<td class="playerTable p2name">Player 2</td>
+						<td class="p2race"></td>
+						<td class="p28bCtr"></td>
+						<td class="p28brCtr"></td>
+						<td class="p2defCtr"></td>
+						<td class="p2gamesW"></td>
+						<td class="p2mp"></td>
+						<td class="p2rt"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+
+		<script src="./js/main.js" type="module"></script>
+	</body>
+</html>

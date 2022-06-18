@@ -1,0 +1,520 @@
+body {
+	background: rgb(34, 68, 101);
+}
+h1 {
+	text-align: center;
+	color: white;
+}
+h2 {
+	color: rgb(3, 41, 129);
+	margin: 10px 0;
+}
+h3 {
+	color: rgb(3, 41, 129);
+	margin: 10px 0;
+	font-size: 24px;
+}
+
+/* Match Details Container */
+.match-details-container {
+	text-align: center;
+	background: rgba(0, 25, 61, 0.889);
+	opacity: 1;
+	display: grid;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+	pointer-events: all;
+	z-index: 200;
+	transition: opacity 0.2s;
+}
+.match-details-inner {
+	max-width: 600px;
+	min-width: 400px;
+	padding: 2rem;
+	border-radius: 5px;
+	min-height: 200px;
+	background: white;
+}
+
+.lag {
+	background: rgb(3, 41, 129);
+	color: white;
+	font-size: x-small;
+	padding: 3px;
+	margin: 0 5px;
+	border-radius: 5px;
+}
+.lag:before {
+	content: "Lag Winner";
+}
+.button {
+	float: left;
+	margin: 0 5px 0 0;
+	width: 130px;
+	height: 30px;
+	position: relative;
+}
+
+.button label,
+.button input {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.button input[type="radio"] {
+	opacity: 0.011;
+	z-index: 100;
+}
+
+.button input[type="radio"]:checked + label {
+	background: rgb(169, 194, 251);
+	border-radius: 4px;
+}
+
+.button label {
+	cursor: pointer;
+	z-index: 90;
+	line-height: 1.2em;
+}
+.gameSelect {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.lagQ {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.game-race-option {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.button-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+#startmatch {
+	width: 100%;
+	padding: 10px;
+}
+
+.gameSelect {
+	margin: 20px 0;
+}
+.player-details-form,
+.lagQ {
+	margin: 20px 0;
+}
+
+/* scoreboard */
+#scoreboard {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 30px 0;
+}
+.player {
+	font-size: small;
+	text-align: center;
+	/* display: block; */
+}
+#p1name,
+#p2name {
+	text-align: center;
+}
+.p1-stats,
+.p2-stats {
+	display: flex;
+	column-gap: 12px;
+	font-size: small;
+}
+
+.playerscores {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex: 1;
+}
+
+.playerscore {
+	font-size: 40px;
+	font-weight: bold;
+	color: white;
+}
+.playerscoredivider {
+	font-size: 40px;
+	color: #ccc;
+}
+.player-details {
+	padding: 15px;
+	background: #ccc;
+	border-radius: 5px;
+}
+.activeTurn {
+	border: 2px solid rgb(3, 41, 129);
+	background: rgb(169, 194, 251);
+}
+.activeTurn::after {
+	display: flex;
+	justify-content: center;
+	content: "Your Shot!";
+	color: white;
+	font-weight: bold;
+	background: rgb(3, 41, 129);
+	padding: 5px;
+}
+.playerNum {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.scores {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.innings {
+	display: flex;
+	flex-direction: column;
+	font-size: small;
+	margin: 20px;
+	color: white;
+}
+.innings span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.deadballs {
+	display: flex;
+	flex-direction: column;
+	font-size: small;
+	margin: 20px;
+	color: white;
+}
+.deadballs span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.ballsmade {
+	font-size: small;
+	text-align: center;
+}
+.gamenum {
+	color: white;
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+}
+
+/* buttons container */
+#button-container {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Buttons */
+#buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+#buttons button {
+	height: 35px;
+}
+.hide {
+	display: none;
+}
+
+.gameoverPopup {
+	background: rgba(0, 0, 0, 0.594);
+	opacity: 0;
+	display: grid;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+	transition: opacity 0.2s;
+}
+.gameoverPopupInner {
+	max-width: 600px;
+	min-width: 400px;
+	padding: 2rem;
+	border-radius: 5px;
+	min-height: 200px;
+	background: white;
+}
+.gameoverPopup.open {
+	opacity: 1;
+	pointer-events: all;
+}
+.block {
+	/* display: block; */
+	opacity: 1;
+	pointer-events: all;
+}
+
+.gameover {
+	display: flex;
+	justify-content: center;
+}
+#gameoverBtn {
+	width: 475px;
+	color: white;
+	background: red;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.gameoverPopupInner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.popup-buttons {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: end;
+	padding: 20px 0 0 0;
+	column-gap: 5px;
+}
+.popup-buttons button {
+	padding: 15px;
+	width: 50%;
+}
+.radio-buttons {
+	font-size: 20px;
+}
+.radio-buttons input[type="radio"] {
+	margin: 5px;
+}
+.radio-buttons input[type="radio"]:checked {
+	color: red;
+}
+#other-buttons {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+#other-buttons button {
+	height: 25px;
+}
+.btn {
+	background: rgb(3, 41, 129);
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: white;
+}
+.btn:hover {
+	background: rgb(169, 194, 251);
+	color: rgb(3, 41, 129);
+	cursor: pointer;
+}
+
+/* Balls */
+#balls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 30px 0;
+	width: 355px;
+}
+.ball {
+	padding: 20px 20px;
+	border-radius: 50%;
+	width: 75px;
+	height: 75px;
+	border: 1px solid black;
+	box-shadow: inset 0 3px 2px -4px #000000;
+}
+
+/* ball inside white circle */
+#balls .ball span {
+	border-radius: 50%;
+	background: white;
+	padding: 8px;
+}
+#balls .ball:hover {
+	box-shadow: inset 0 5px 8px -3px #000000;
+	cursor: pointer;
+}
+#balls .clicked {
+	opacity: 0.3;
+	box-shadow: inset 0 5px 8px -3px #000000;
+}
+
+/* ball colors */
+#balls .ball-1 {
+	background: yellow;
+}
+#balls .ball-2 {
+	background: blue;
+}
+#balls .ball-3 {
+	background: red;
+}
+#balls .ball-4 {
+	background: purple;
+}
+#balls .ball-5 {
+	background: orange;
+}
+#balls .ball-6 {
+	background: green;
+}
+#balls .ball-7 {
+	background: darkred;
+}
+#balls .ball-8 {
+	background: black;
+}
+#balls .ball-9 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		rgba(244, 228, 12, 1) 23%,
+		rgba(244, 228, 12, 1) 49%,
+		rgba(244, 228, 12, 1) 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-10 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		blue 23%,
+		blue 49%,
+		blue 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-11 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		red 23%,
+		red 49%,
+		red 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-12 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		purple 23%,
+		purple 49%,
+		purple 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-13 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		orange 23%,
+		orange 49%,
+		orange 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-14 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		green 23%,
+		green 49%,
+		green 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-15 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		darkred 23%,
+		darkred 49%,
+		darkred 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+
+/* History */
+table {
+	margin: 50px 0;
+}
+
+table,
+th,
+td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+tr,
+td,
+th {
+	padding: 5px;
+	text-align: center;
+}
+.vertical {
+	text-align: center;
+	white-space: nowrap;
+	transform-origin: 50% 50%;
+	transform: rotate(90deg);
+}
+.vertical:before {
+	content: "";
+	padding-top: 110%; /* takes width as reference, + 10% for faking some extra padding */
+	display: inline-block;
+	vertical-align: middle;
+}
+.small {
+	padding: 0;
+}
+.playerTable {
+	width: 150px;
+}
