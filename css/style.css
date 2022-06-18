@@ -6,6 +6,7 @@ body {
 h1 {
 	text-align: center;
 	color: white;
+	margin: 10px;
 }
 h2 {
 	color: rgb(3, 41, 129);
@@ -128,7 +129,7 @@ h3 {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	margin: 30px 0;
+	margin: 10px 0;
 }
 .player {
 	font-size: small;
