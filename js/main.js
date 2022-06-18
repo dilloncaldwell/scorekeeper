@@ -1,10 +1,10 @@
-import Player, { player1obj, player2obj } from "./Player.js";
-import getRaceFromSkillLevel from "./getRaceFromSkillLevel.js";
-import getPointsRaceFromSkillLevel from "./getPointsRaceFromSkillLevel.js";
-import printBallsToHTML from "./printBallstoHTML.js";
-import resetBalls from "./resetBalls.js";
-import reset from "./reset.js";
-import get9BallMP from "./get9BallMP.js";
+import Player, { player1obj, player2obj } from "./functions/Player.js";
+import getRaceFromSkillLevel from "./functions/getRaceFromSkillLevel.js";
+import getPointsRaceFromSkillLevel from "./functions/getPointsRaceFromSkillLevel.js";
+import printBallsToHTML from "./functions/printBallstoHTML.js";
+import resetBalls from "./functions/resetBalls.js";
+import reset from "./functions/reset.js";
+import get9BallMP from "./functions/get9BallMP.js";
 
 //------------------------------------------------------------
 //------------------------------------------------------------

@@ -21,7 +21,7 @@ h3 {
 /* Match Details Container */
 .match-details-container {
 	text-align: center;
-	background: rgba(0, 25, 61, 0.889);
+	background: rgb(0, 25, 61);
 	opacity: 1;
 	display: grid;
 	position: fixed;
@@ -140,6 +140,12 @@ h3 {
 #p2name {
 	text-align: center;
 }
+
+.nameonscoreboard {
+	display: flex;
+	flex-direction: row;
+}
+
 .p1-stats,
 .p2-stats {
 	display: flex;

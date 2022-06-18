@@ -1,7 +1,7 @@
-import { resetPlayersScore } from "./main.js";
+import { resetPlayersScore } from "../main.js";
 import { player1obj, player2obj } from "./Player.js";
 import resetBalls from "./resetBalls.js";
-import removeBallsFromHTML from "./main.js";
+import removeBallsFromHTML from "../main.js";
 //--------------------------------
 // reset for Next Match Button
 //--------------------------------
