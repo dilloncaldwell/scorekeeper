@@ -77,7 +77,7 @@ function reset(inningCount, inningCtr) {
 	resetPlayersScore();
 	player1obj.gamenum = 1;
 	player2obj.gamenum = 1;
-	gamectr.textContent = "Game " + player1obj.game;
+	gamectr.textContent = "Game " + player1obj.gamenum;
 	player1obj.lastclicked = "";
 	player2obj.lastclicked = "";
 	player1obj.points = 0;
