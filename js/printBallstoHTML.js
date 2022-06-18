@@ -11,6 +11,9 @@ const printBallsToHTML = (num) => {
 		newButton.innerHTML = `<span>${i}</span>`;
 		newButton.dataset.id = i;
 		newButton.dataset.clicked = false;
+		if (i < 10) {
+			newButton.classList.add("ballSingleNum");
+		}
 		if (i === 9) {
 			newButton.dataset.points = 2;
 		} else {
