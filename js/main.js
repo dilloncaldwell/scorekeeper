@@ -134,18 +134,21 @@ function validateFormInputs(value) {
 			console.log("player 1 name input must not be left blank");
 			document.querySelector("#singlep1error").textContent =
 				"player 1 name input must not be left blank";
+			singlePlayer1Name.focus();
 			return false;
 		}
 		if (singlePlayer2Name.value == "") {
 			console.log("player 2 name input must not be left blank");
 			document.querySelector("#singlep2error").textContent =
 				"player 2 name input must not be left blank";
+			singlePlayer2Name.focus();
 			return false;
 		}
 		if (singleRaceTo.value == "") {
 			console.log("race to must be given a value");
 			document.querySelector("#singleraceto").textContent =
 				"race to must be given a value";
+			singleRaceTo.focus();
 			return false;
 		}
 	} else if (value == "sl") {
