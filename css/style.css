@@ -120,6 +120,15 @@ h3 {
 .lagQ {
 	margin: 20px 0;
 }
+.player-details-form input,
+.race-to input {
+	font-size: medium;
+	margin: 5px 0;
+}
+.player-details-form label {
+	font-size: x-small;
+	font-weight: bold;
+}
 
 /* scoreboard */
 #scoreboard {
