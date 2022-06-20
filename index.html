@@ -11,30 +11,32 @@
 		<h1><span id="gameType"></span> Score Keeper</h1>
 		<div class="match-details-container">
 			<div class="match-details-inner">
+                <h1 class="title"> Score Keeper</h1>
                 <form id="gamesetupform" action="" method="post">
                     <div class="gameSelect">
-                        <h2>Select A Game:</h2>
+                        <h2>Select A Game:</h2><br>
                         <div class="button-wrapper">
                             <div class="button">
                                 <input type="radio" name="game-select" id="game-select-8"/>
-                                <label class="btn" for="game-select-8">8-Ball</label>
+                                <label class="btn radiobtn" for="game-select-8">8-Ball</label>
+                                
                             </div>
                             <div class="button">
                                 <input type="radio" name="game-select" id="game-select-9"/>
-                                <label class="btn" for="game-select-9">9-Ball</label>
+                                <label class="btn radiobtn" for="game-select-9">9-Ball</label>
                             </div>
                         </div>
                     </div>
                     <div class="game-race-option">
-                        <h2>Select Race Type:</h2>
+                        <h2>Select Race Type:</h2><br>
                         <div class="button-wrapper">
                             <div class="button">
                                 <input type="radio" name="race-option" id="single-race" checked="true">
-                                <label class="btn" for="single-race" >Single Race</label>
+                                <label class="btn radiobtn" for="single-race" >Single Race</label>
                             </div>
                             <div class="button">
                                 <input type="radio" name="race-option" id="sl-race">
-                                <label class="btn" for="sl-race" >APA SL Race</label>
+                                <label class="btn radiobtn" for="sl-race" >APA SL Race</label>
                             </div>
                         </div>
                     </div>
@@ -100,15 +102,15 @@
                         </div>
                     </div>
                     <div class="lagQ">
-                        <h2>Who breaks first?</h2>
+                        <h2>Who breaks first?</h2><br>
                         <div class="button-wrapper">
                             <div class="button">
                                 <input type="radio" id="p1" name="lagwinner" />
-                                <label class="btn" for="p1">Player 1</label>
+                                <label class="btn radiobtn" for="p1">Player 1</label>
                             </div>
                             <div class="button">
                                 <input type="radio" id="p2" name="lagwinner" />
-                                <label class="btn" for="p2">Player 2</label>
+                                <label class="btn radiobtn" for="p2">Player 2</label>
                             </div>
                         </div>
                     </div>
@@ -119,7 +121,7 @@
 		<!-- .match-details-container -->
 
 		<div id="scoreboard">
-			<div id="player1-details" class="player-details">
+			<!-- <div id="player1-details" class="player-details">
 				<div class="playerNum"><span class="player">Player #1</span><span id="p1lag"></span></div>
 				<h3 id="p1name">Player #1</h3>
 				<div class="p1-stats">
@@ -148,6 +150,35 @@
                 <div class="printedBalls">
                     
                 </div>
+			</div> -->
+			<div id="player1-details" class="player-details">
+				<div class="playerNum"><span class="player">Player #1</span><span id="p1lag"></span></div>
+				<div class="nameonscoreboard">
+					<h3 id="p1name">Player #1</h3>
+                    <div class="p1skilllevel">
+						<p class="hideSingle">SL:<br> <span id="p1sl"></span></p>
+					</div>
+                </div>
+				<div class="p1-stats">
+					<div class="stats">
+						<span class="hide9andslrace">
+							Race:<br> <span id="p1s">0</span> /
+							<span id="slp1r">0</span>
+						</span>
+						<span class="hideIf8Ball hideSingle">
+							Points: <br><span id="p1p">0</span> /
+							<span id="slp1p">0</span>
+						</span>
+						<span class="hideSingle">
+							Timeouts:<br> <span id="p1TimeOutCtr">0</span> /
+							<span id="p1TimeoutsAllowed">0</span>
+						</span>
+						<span>Defense:<br> <span id="p1DefenseCtr">0</span></span>
+					</div>
+				</div>
+				<p class="ballsmade">
+					Balls Made:</br> <span id="p1MadeBalls"></span>
+				</p>
 			</div>
 			<div class="scores">
                 <div class="gamenum">
@@ -187,27 +218,26 @@
 			<div id="player2-details" class="player-details">
 				<div class="playerNum"><span class="player">Player #2</span><span id="p2lag"></span></div>
 				<div class="nameonscoreboard">
-                    <p class="hideSingle">SL: <span id="p2sl"></span></p>
-                    <h3 id="p2name">Player #2</h3>
+					<h3 id="p2name">Player #2</h3>
+                    <div class="p2skilllevel">
+						<p class="hideSingle">SL:<br> <span id="p2sl"></span></p>
+					</div>
                 </div>
 				<div class="p2-stats">
-					<div>
-						<!-- <p class="hideSingle">SL: <span id="p2sl"></span></p> -->
-						<p class="hide9andslrace">
-							Race: <span id="p2s">0</span> /
+					<div class="stats">
+						<span class="hide9andslrace">
+							Race:<br> <span id="p2s">0</span> /
 							<span id="slp2r">0</span>
-						</p>
-                        <p class="hideIf8Ball hideSingle">
-							Points: <span id="p2p">0</span> /
+						</span>
+						<span class="hideIf8Ball hideSingle">
+							Points: <br><span id="p2p">0</span> /
 							<span id="slp2p">0</span>
-						</p>
-					</div>
-					<div>
-						<p class="hideSingle">
-							Timeouts: <span id="p2TimeOutCtr">0</span> /
+						</span>
+						<span class="hideSingle">
+							Timeouts:<br> <span id="p2TimeOutCtr">0</span> /
 							<span id="p2TimeoutsAllowed">0</span>
-						</p>
-						<p>Defense: <span id="p2DefenseCtr">0</span></p>
+						</span>
+						<span>Defense:<br> <span id="p2DefenseCtr">0</span></span>
 					</div>
 				</div>
 				<p class="ballsmade">
@@ -227,7 +257,7 @@
 				<!-- <button>Fouls</button> -->
 				<!-- <button id="scratch" class="btn">Scratch</button> -->
 				<button id="dead" class="btn hideIf8Ball">Dead Ball</button>
-				<button id="reset" class="btn">Reset Match</button>
+				<!-- <button id="reset" class="btn">Reset Match</button> -->
 			</div>
 			<!-- #buttons -->
 			<div id="balls"></div>
@@ -277,8 +307,11 @@
             </div> <!-- End .gameoverPopupInner -->
         </div> <!-- End .gameoverPopup -->
         <div class="gameover">
-            <button id="gameoverBtn">Game Over</button>
+            <button id="gameoverBtn" class="btn">Game Over</button>
         </div>
+		<div class="reset">
+			<button id="reset" class="btn resetBtn">Reset Match</button>
+		</div>
         
 
 		<!-- <div id="skillLevelChart">

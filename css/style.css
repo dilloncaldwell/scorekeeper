@@ -1,6 +1,6 @@
 body {
 	background: rgb(34, 68, 101);
-	margin: 0;
+	margin: 1em;
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
@@ -21,25 +21,31 @@ h3 {
 }
 
 /* Match Details Container */
+.title {
+	color: rgb(3, 41, 129);
+}
 .match-details-container {
 	text-align: center;
 	background: rgb(0, 25, 61);
 	opacity: 1;
-	display: grid;
+	display: flex;
 	position: fixed;
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	top: 0;
 	left: 0;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	pointer-events: all;
 	z-index: 200;
-	transition: opacity 0.2s;
+	margin-bottom: 20px;
+
+	/* transition: opacity 0.2s; */
 }
 .match-details-inner {
-	max-width: 600px;
-	min-width: 400px;
+	/* max-width: 600px;
+	min-width: 400px; */
+	margin-top: 30px;
 	padding: 2rem;
 	border-radius: 5px;
 	min-height: 200px;
@@ -55,17 +61,18 @@ h3 {
 	border-radius: 5px;
 }
 .lag:before {
-	content: "Lag Winner";
+	content: "Lag";
 }
 .button {
 	float: left;
 	margin: 0 5px 0 0;
-	width: 130px;
-	height: 30px;
+	/* width: 130px;
+	height: 50px; */
 	position: relative;
+	/* padding: 15px 20px; */
 }
 
-.button label,
+/* .button label,
 .button input {
 	display: block;
 	position: absolute;
@@ -73,11 +80,13 @@ h3 {
 	left: 0;
 	right: 0;
 	bottom: 0;
-}
+} */
 
 .button input[type="radio"] {
-	opacity: 0.011;
+	/* opacity: 0.011; */
+	opacity: 0;
 	z-index: 100;
+	/* width: 100%; */
 }
 
 .button input[type="radio"]:checked + label {
@@ -88,13 +97,19 @@ h3 {
 .button label {
 	cursor: pointer;
 	z-index: 90;
-	line-height: 1.2em;
+	line-height: 1.3em;
+}
+.buttongroup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .gameSelect {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin: 20px 0 10px 0;
 }
 .lagQ {
 	display: flex;
@@ -107,20 +122,20 @@ h3 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin: 30px 0 10px 0;
 }
 .button-wrapper {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 #startmatch {
 	width: 100%;
 	padding: 10px;
+	margin-top: 20px;
 }
 
-.gameSelect {
-	margin: 20px 0;
-}
 .player-details-form,
 .lagQ {
 	margin: 20px 0;
@@ -141,18 +156,53 @@ h3 {
 #p1name,
 #p2name {
 	text-align: center;
+	padding-top: 5px;
 }
 
 .nameonscoreboard {
+	position: relative;
 	display: flex;
 	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+.p1skilllevel {
+	font-size: x-small;
+	color: white;
+	background: rgb(3, 41, 129);
+	padding: 0 12px;
+	border-radius: 0 5px 0 5px;
+	text-align: center;
+	position: absolute;
+	top: -33px;
+	right: -17px;
+}
+.p2skilllevel {
+	font-size: x-small;
+	color: white;
+	background: rgb(3, 41, 129);
+	padding: 0 12px;
+	border-radius: 0 5px 0 5px;
+	text-align: center;
+	position: absolute;
+	top: -33px;
+	right: -17px;
 }
 
 .p1-stats,
 .p2-stats {
 	display: flex;
-	column-gap: 12px;
-	font-size: small;
+	justify-content: space-between;
+	font-size: x-small;
+	flex-direction: row;
+}
+.stats {
+	display: flex;
+	justify-content: space-evenly;
+	flex: 1;
+	column-gap: 15px;
+	/* width: 100%; */
+	text-align: center;
 }
 
 .playerscores {
@@ -183,15 +233,16 @@ h3 {
 .activeTurn::after {
 	display: flex;
 	justify-content: center;
+	font-size: small;
 	content: "Your Shot!";
 	color: white;
 	font-weight: bold;
 	background: rgb(3, 41, 129);
-	padding: 5px;
+	padding: 2px;
 }
 .playerNum {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	width: 100%;
 }
 
@@ -225,8 +276,9 @@ h3 {
 	align-items: center;
 }
 .ballsmade {
-	font-size: small;
+	font-size: x-small;
 	text-align: center;
+	margin: 5px 0;
 }
 .gamenum {
 	color: white;
@@ -245,13 +297,34 @@ h3 {
 }
 
 /* Buttons */
+.btn {
+	background: rgb(3, 41, 129);
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: white;
+}
+.btn:hover {
+	background: rgb(169, 194, 251);
+	color: rgb(3, 41, 129);
+	cursor: pointer;
+}
+
 #buttons {
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
+	flex: 1;
 }
 #buttons button {
 	height: 60px;
+}
+/* .buttongroup {
+	background-color: rgb(3, 41, 129);
+	border-radius: 5px;
+} */
+.radiobtn {
+	padding: 15px 30px;
 }
 .hide {
 	display: none;
@@ -297,10 +370,27 @@ h3 {
 	width: 475px;
 	color: white;
 	background: red;
-	padding: 10px;
+	padding: 15px;
 	border: 1px solid black;
 	border-radius: 5px;
 	cursor: pointer;
+}
+#gameoverBtn:hover {
+	background: rgb(169, 194, 251);
+	color: rgb(3, 41, 129);
+}
+
+.resetBtn {
+	width: 475px;
+	padding: 15px;
+	background: red;
+	border: 1px solid black;
+	margin: 10px 0;
+	cursor: pointer;
+}
+.reset {
+	display: flex;
+	justify-content: center;
 }
 .gameoverPopupInner {
 	display: flex;
@@ -337,18 +427,6 @@ h3 {
 }
 #other-buttons button {
 	height: 25px;
-}
-.btn {
-	background: rgb(3, 41, 129);
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	padding: 5px;
-	color: white;
-}
-.btn:hover {
-	background: rgb(169, 194, 251);
-	color: rgb(3, 41, 129);
-	cursor: pointer;
 }
 
 /* Balls */

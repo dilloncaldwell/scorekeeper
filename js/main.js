@@ -759,7 +759,7 @@ function addBallToPlayer(ballId, ballPoints) {
 	if (player1obj.turn == true) {
 		if (!player1obj.ballsMade.includes(ballId)) {
 			player1obj.ballsMade.push(ballId);
-			p1MadeBalls.textContent = player1obj.ballsMade;
+			p1MadeBalls.textContent = player1obj.ballsMade.join(", ");
 			player1obj.points += ballPoints;
 			p1p.textContent = player1obj.points;
 			p1scoreSLR.textContent = player1obj.points;
@@ -776,7 +776,7 @@ function addBallToPlayer(ballId, ballPoints) {
 	if (player2obj.turn == true) {
 		if (!player2obj.ballsMade.includes(ballId)) {
 			player2obj.ballsMade.push(ballId);
-			p2MadeBalls.textContent = player2obj.ballsMade;
+			p2MadeBalls.textContent = player2obj.ballsMade.join(", ");
 			player2obj.points += ballPoints;
 			p2p.textContent = player2obj.points;
 			p2scoreSLR.textContent = player2obj.points;
