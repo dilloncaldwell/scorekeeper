@@ -86,7 +86,7 @@ h3 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin: 20px 0 10px 0;
+	margin: 10px 0 10px 0;
 }
 .lagQ {
 	display: flex;
@@ -99,7 +99,7 @@ h3 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin: 30px 0 10px 0;
+	margin: 15px 0 10px 0;
 }
 .button-wrapper {
 	display: flex;
@@ -115,7 +115,7 @@ h3 {
 
 .player-details-form,
 .lagQ {
-	margin: 10px 0;
+	margin: 5px 0;
 }
 .player-details-form input,
 .race-to input {
