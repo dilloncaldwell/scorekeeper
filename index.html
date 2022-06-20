@@ -55,6 +55,7 @@
                                 id="single-player1-name"
                                 placeholder="Name"
                             />
+							<p class="error" id="singlep1error"></p>
                         </div>
                         <div class="player-details-form">
                             <label>Player #2:</label>
@@ -64,16 +65,18 @@
                                 id="single-player2-name"
                                 placeholder="Name"
                             />
+							<p class="error" id="singlep2error"></p>
                         </div>
                     </div>
                     <div class="race-to">
                         <h2>Race To:</h2>
                         <label for="raceto">Games:</label>
                         <input type="number" name="race" id="raceto" placeholder="5">
+						<p class="error" id="singleraceto"></p>
                     </div>
                     <div id="add-players">
                         <h2>Add Players:</h2>
-                        <div class="player-details-form">
+                        <div class="player-details-form" method="post">
                             <label>Player #1:</label>
                             <div class="forminputs">
 								<input
@@ -86,7 +89,7 @@
 									type="number"
 									name="player1-skill-level"
 									id="player1-skill-level"
-									placeholder="Skill Level"
+									placeholder="SL"
 								/>
 							</div>
                         </div>
@@ -103,7 +106,7 @@
 									type="number"
 									name="player2-skill-level"
 									id="player2-skill-level"
-									placeholder="Skill Level"
+									placeholder="SL"
 								/>
 							</div>
                         </div>
@@ -133,7 +136,7 @@
 				<div class="nameonscoreboard">
 					<h3 id="p1name">Player #1</h3>
                     <div class="p1skilllevel">
-						<p class="hideSingle">SL:<br> <span id="p1sl"></span></p>
+						<p class="hideSingle">SL<br> <span id="p1sl"></span></p>
 					</div>
                 </div>
 				<div class="p1-stats">
@@ -197,7 +200,7 @@
 				<div class="nameonscoreboard">
 					<h3 id="p2name">Player #2</h3>
                     <div class="p2skilllevel">
-						<p class="hideSingle">SL:<br> <span id="p2sl"></span></p>
+						<p class="hideSingle">SL<br> <span id="p2sl"></span></p>
 					</div>
                 </div>
 				<div class="p2-stats">

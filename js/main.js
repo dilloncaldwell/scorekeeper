@@ -70,28 +70,6 @@ const slrace = document.querySelector("#sl-race");
 const racetodiv = document.querySelector(".race-to");
 const addslplayers = document.querySelector("#add-players");
 const addplayerssingle = document.querySelector("#add-players-single");
-
-if (singlerace.checked) {
-	addslplayers.style.display = "none";
-	racetodiv.style.display = "block";
-	addplayerssingle.style.display = "block";
-}
-
-singlerace.addEventListener("click", (event) => {
-	if (event.target && event.target.matches("input[type='radio']")) {
-		addslplayers.style.display = "none";
-		racetodiv.style.display = "block";
-		addplayerssingle.style.display = "block";
-	}
-});
-slrace.addEventListener("click", (event) => {
-	if (event.target && event.target.matches("input[type='radio']")) {
-		racetodiv.style.display = "none";
-		addplayerssingle.style.display = "none";
-		addslplayers.style.display = "block";
-	}
-});
-
 const startmatch = document.querySelector("#startmatch");
 const matchDetailsContainer = document.querySelector(
 	".match-details-container"
@@ -108,25 +86,110 @@ const selectedGame8 = document.querySelector("#game-select-8");
 const selectedGame9 = document.querySelector("#game-select-9");
 const gameType = document.querySelector("#gameType");
 
+if (singlerace.checked) {
+	addslplayers.style.display = "none";
+	racetodiv.style.display = "block";
+	addplayerssingle.style.display = "block";
+}
+
+selectedGame8.addEventListener("click", () => {
+	player1SL.min = "2";
+	player1SL.max = "7";
+	player2SL.min = "2";
+	player2SL.max = "7";
+});
+selectedGame9.addEventListener("click", () => {
+	player1SL.min = "1";
+	player1SL.max = "9";
+	player2SL.min = "1";
+	player2SL.max = "9";
+});
+
+singlerace.addEventListener("click", (event) => {
+	if (event.target && event.target.matches("input[type='radio']")) {
+		addslplayers.style.display = "none";
+		racetodiv.style.display = "block";
+		addplayerssingle.style.display = "block";
+	}
+});
+slrace.addEventListener("click", (event) => {
+	if (event.target && event.target.matches("input[type='radio']")) {
+		racetodiv.style.display = "none";
+		addplayerssingle.style.display = "none";
+		addslplayers.style.display = "block";
+	}
+});
+function resetInputErrors() {
+	document.querySelector("#singlep1error").textContent = "";
+	document.querySelector("#singlep2error").textContent = "";
+	document.querySelector("#singleraceto").textContent = "";
+	console.clear();
+}
+
+function validateFormInputs(value) {
+	resetInputErrors();
+	if (value == "single") {
+		//race is single
+		if (singlePlayer1Name.value == "") {
+			console.log("player 1 name input must not be left blank");
+			document.querySelector("#singlep1error").textContent =
+				"player 1 name input must not be left blank";
+			return false;
+		}
+		if (singlePlayer2Name.value == "") {
+			console.log("player 2 name input must not be left blank");
+			document.querySelector("#singlep2error").textContent =
+				"player 2 name input must not be left blank";
+			return false;
+		}
+		if (singleRaceTo.value == "") {
+			console.log("race to must be given a value");
+			document.querySelector("#singleraceto").textContent =
+				"race to must be given a value";
+			return false;
+		}
+	} else if (value == "sl") {
+		//if race is by SL
+		if (player1Name.value == "") {
+			console.log("players 1 name input must not be left blank");
+			return false;
+		}
+		if (player2Name.value == "") {
+			console.log("player 2 name input must not be left blank");
+			return false;
+		}
+		if (
+			player1SL.value == "" ||
+			player1SL.value > player1SL.max ||
+			player1SL.value < player1SL.min
+		) {
+			console.log(
+				"Player 1 SL is not between defined limits: 1-9 in 9-ball, and 2-7 in 8-ball"
+			);
+			return false;
+		}
+		if (
+			player2SL.value == "" ||
+			player2SL.value > player2SL.max ||
+			player2SL.value < player2SL.min
+		) {
+			console.log(
+				"Player 2 SL is not between defined limits: 1-9 in 9-ball, and 2-7 in 8-ball"
+			);
+			return false;
+		}
+		console.log("validateforminputs returned true");
+		return true;
+	}
+}
+
 startmatch.addEventListener("click", (e) => {
 	e.preventDefault();
-
-	if (selectedGame8.checked) {
-		setGame("8ball");
-		ballsDiv.style.width = "355px";
-	}
-	if (selectedGame9.checked) {
-		setGame("9ball");
-		ballsDiv.style.width = "285px";
-	}
-	if (slrace.checked && selectedGame9.checked) {
-		let arr9ballslrace = document.querySelectorAll(".hide9andslrace");
-		arr9ballslrace.forEach((item) => {
-			item.classList.add("hide");
-		});
-		// console.log("adding hide class to hide9andslrace");
-	}
 	if (singlerace.checked) {
+		if (validateFormInputs("single") === false) {
+			console.error("validateforminputs returned false");
+			return;
+		}
 		matchDetailsContainer.style.display = "none";
 		player1obj.racetype = "single";
 		player2obj.racetype = "single";
@@ -144,6 +207,17 @@ startmatch.addEventListener("click", (e) => {
 		slp2r.textContent = player2obj.race;
 	}
 	if (slrace.checked) {
+		if (validateFormInputs("sl") === false) {
+			console.error("validateforminputs returned false");
+			return;
+		}
+		if (slrace.checked && selectedGame9.checked) {
+			let arr9ballslrace = document.querySelectorAll(".hide9andslrace");
+			arr9ballslrace.forEach((item) => {
+				item.classList.add("hide");
+			});
+			// console.log("adding hide class to hide9andslrace");
+		}
 		matchDetailsContainer.style.display = "none";
 		player1obj.racetype = "sl";
 		player2obj.racetype = "sl";
@@ -180,6 +254,14 @@ startmatch.addEventListener("click", (e) => {
 				Number(p2sl.textContent)
 			);
 		}
+	}
+	if (selectedGame8.checked) {
+		setGame("8ball");
+		ballsDiv.style.width = "355px";
+	}
+	if (selectedGame9.checked) {
+		setGame("9ball");
+		ballsDiv.style.width = "285px";
 	}
 	if (p1BreaksFirst.checked) {
 		player1obj.turn = true;
@@ -814,6 +896,10 @@ function undoAddBallToPlayer(ballId, ballPoints) {
 		p2MadeBalls.textContent = player2obj.ballsMade.join(", ");
 	}
 }
+
+// ----------------------------------
+// form input validation
+// ----------------------------------
 
 //------------------
 // reset ScoreBoard
