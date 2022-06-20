@@ -58,11 +58,11 @@ h3 {
 .lag:before {
 	content: "Lag";
 }
-.button {
+/* .button {
 	float: left;
 	margin: 0 5px 0 0;
 	position: relative;
-}
+} */
 
 .button input[type="radio"] {
 	opacity: 0;
@@ -126,8 +126,7 @@ h3 {
 	margin: 5px 0;
 }
 .player-details-form label {
-	font-size: x-small;
-	font-weight: bold;
+	font-size: small;
 }
 
 /* scoreboard */
