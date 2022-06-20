@@ -115,7 +115,7 @@ h3 {
 
 .player-details-form,
 .lagQ {
-	margin: 20px 0;
+	margin: 10px 0;
 }
 .player-details-form input,
 .race-to input {
@@ -313,7 +313,7 @@ h3 {
 	height: 60px;
 }
 .radiobtn {
-	padding: 15px 30px;
+	padding: 10px 20px;
 }
 .hide {
 	display: none;
