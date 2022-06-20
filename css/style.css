@@ -153,7 +153,7 @@ h3 {
 	border-radius: 0 5px 0 5px;
 	text-align: center;
 	position: absolute;
-	top: -34px;
+	top: -35px;
 	right: -17px;
 }
 .p2skilllevel {
@@ -164,7 +164,7 @@ h3 {
 	border-radius: 0 5px 0 5px;
 	text-align: center;
 	position: absolute;
-	top: -33px;
+	top: -35px;
 	right: -17px;
 }
 
@@ -203,6 +203,7 @@ h3 {
 	padding: 15px;
 	background: #ccc;
 	border-radius: 5px;
+	border: 1px solid #ccc;
 }
 .activeTurn {
 	border: 1px solid rgb(3, 41, 129);
@@ -281,6 +282,7 @@ h3 {
 	border: 1px solid #ccc;
 	padding: 5px;
 	color: white;
+	touch-action: manipulation;
 }
 .btn:hover {
 	background: rgb(169, 194, 251);
