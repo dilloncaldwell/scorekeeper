@@ -755,9 +755,31 @@ closeGameoverPopup.addEventListener("click", () => {
 	closePopup();
 	if (getCurrentPlayer() == "Player 1") {
 		balls[player1obj.lastclicked - 1].classList.toggle("clicked");
+		let arr = player1obj.ballsMade;
+		// find index of ball id
+		let indextoremove = arr.findIndex(
+			(id) => id === balls[player1obj.lastclicked - 1]
+		);
+		arr.splice(indextoremove, 1);
+		player1obj.ballsMade = arr;
+		p1MadeBalls.textContent = player1obj.ballsMade.join(", ");
+		player1obj.points -= 2;
+		p1scoreSLR.textContent = player1obj.points;
+		p1p.textContent = player1obj.points;
 	}
 	if (getCurrentPlayer() == "Player 2") {
 		balls[player2obj.lastclicked - 1].classList.toggle("clicked");
+		let arr = player2obj.ballsMade;
+		// find index of ball id
+		let indextoremove = arr.findIndex(
+			(id) => id === balls[player2obj.lastclicked - 1]
+		);
+		arr.splice(indextoremove, 1);
+		player2obj.ballsMade = arr;
+		p2MadeBalls.textContent = player2obj.ballsMade.join(", ");
+		player2obj.points -= 2;
+		p2scoreSLR.textContent = player2obj.points;
+		p2p.textContent = player2obj.points;
 	}
 });
 
