@@ -1,11 +1,15 @@
 * {
 	box-sizing: border-box;
 }
+html,
+body {
+	overflow: hidden;
+}
 body {
 	background: rgb(34, 68, 101);
 	margin: 1em;
 	height: 100%;
-	overflow: hidden;
+	position: relative;
 }
 h1 {
 	text-align: center;
