@@ -120,9 +120,13 @@ slrace.addEventListener("click", (event) => {
 	}
 });
 function resetInputErrors() {
-	document.querySelector("#singlep1error").textContent = "";
-	document.querySelector("#singlep2error").textContent = "";
-	document.querySelector("#singleraceto").textContent = "";
+	let errors = document.querySelectorAll(".error");
+	errors.forEach((error) => {
+		error.textContent = "";
+	});
+	// document.querySelector("#singlep1error").textContent = "";
+	// document.querySelector("#singlep2error").textContent = "";
+	// document.querySelector("#singleraceto").textContent = "";
 	console.clear();
 }
 

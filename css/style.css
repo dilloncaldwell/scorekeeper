@@ -295,7 +295,7 @@ h3 {
 	background: rgb(3, 41, 129);
 	border-radius: 5px;
 	border: 1px solid #ccc;
-	padding: 5px;
+	padding: 10px 15px;
 	color: white;
 	touch-action: manipulation;
 	line-height: 1.25rem;
