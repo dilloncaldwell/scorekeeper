@@ -1,13 +1,14 @@
 body {
 	background: rgb(34, 68, 101);
-	margin: 1em;
+	margin: 0 1em;
 	padding: 0;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 h1 {
 	text-align: center;
@@ -51,7 +52,7 @@ h3 {
 	border-radius: 5px;
 	min-height: 200px;
 	width: 100%;
-	max-width: 500px;
+	max-width: 450px;
 	background: white;
 }
 
