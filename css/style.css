@@ -1,14 +1,13 @@
+html {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
 body {
 	background: rgb(34, 68, 101);
 	margin: 1em;
-	padding: 0;
 	height: 100%;
-	/* display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center; */
-	overflow-x: hidden;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 h1 {
 	text-align: center;
