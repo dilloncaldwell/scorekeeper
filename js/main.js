@@ -300,12 +300,14 @@ startmatch.addEventListener("click", (e) => {
 			balls[i].classList.toggle("clicked");
 			if (whatGame() == "8-Ball") {
 				if (ballId == 8) {
-					if8BallIsPocketed();
+					// if8BallIsPocketed();
+					openPopup();
 				}
 			}
 			if (whatGame() == "9-Ball") {
 				if (ballId == 9) {
-					if9BallIsPocketed();
+					// if9BallIsPocketed();
+					openPopup();
 				}
 			}
 		});
@@ -526,6 +528,16 @@ function didPlayerMakeToHill(playerobj, score) {
 }
 
 function player1Wins() {
+	// if (whatGame() == "8-Ball") {
+	// 	if (player1obj.lastclicked == 8) {
+	// 		if8BallIsPocketed();
+	// 	}
+	// }
+	// if (player1obj.lastclicked == "9-Ball") {
+	// 	if (ballId == 9) {
+	// 		if9BallIsPocketed();
+	// 	}
+	// }
 	if (
 		player1obj.gameselect == "8ball" ||
 		(player1obj.gameselect == "9ball" && player1obj.racetype == "single")
@@ -586,6 +598,16 @@ function player1Wins() {
 }
 
 function player2Wins() {
+	// if (whatGame() == "8-Ball") {
+	// 	if (player2obj.lastclicked == 8) {
+	// 		if8BallIsPocketed();
+	// 	}
+	// }
+	// if (whatGame() == "9-Ball") {
+	// 	if (player2obj.lastclicked == 9) {
+	// 		if9BallIsPocketed();
+	// 	}
+	// }
 	if (
 		player2obj.gameselect == "8ball" ||
 		(player2obj.gameselect == "9ball" && player2obj.racetype == "single")
@@ -723,6 +745,9 @@ const closeGameoverPopup = document.querySelector(".closeGameoverPopup");
 const confirmBtn = document.querySelector(".confirm");
 function openPopup() {
 	gameoverPopup.classList.add("open");
+	document.querySelectorAll(".currPlayerName").forEach((item) => {
+		item.textContent = getCurrentPlayer();
+	});
 }
 function closePopup() {
 	gameoverPopup.classList.remove("open");
@@ -747,6 +772,12 @@ window.addEventListener("keydown", (event) => {
 });
 closeGameoverPopup.addEventListener("click", () => {
 	closePopup();
+	if (getCurrentPlayer() == "Player 1") {
+		balls[player1obj.lastclicked - 1].classList.toggle("clicked");
+	}
+	if (getCurrentPlayer() == "Player 2") {
+		balls[player2obj.lastclicked - 1].classList.toggle("clicked");
+	}
 });
 
 confirmBtn.addEventListener("click", () => {
@@ -758,6 +789,8 @@ confirmBtn.addEventListener("click", () => {
 	const breaknRun = document.querySelector("#breaknRun");
 	const currPlayerWins = document.querySelector("#currplayerwins");
 	// console.log("currPlayer", getCurrentPlayer());
+	deadBallsArray.length = 0;
+	deadballsspan.textContent = "";
 	if (getCurrentPlayer() == "Player 1") {
 		if (
 			currPlayerWins.checked == true ||
@@ -768,6 +801,7 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player wins
 			closePopup();
 			player1Wins();
+			updateGameNum();
 			// console.log("pl wins..");
 		} else if (
 			early8.checked == true ||
@@ -777,6 +811,7 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player loses
 			closePopup();
 			player2Wins();
+			updateGameNum();
 			// console.log("p1 losses so p2 wins..");
 		}
 	} else if (getCurrentPlayer() == "Player 2") {
@@ -789,6 +824,7 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player wins
 			closePopup();
 			player2Wins();
+			updateGameNum();
 		} else if (
 			early8.checked == true ||
 			eightwrongpocket.checked == true ||
@@ -797,6 +833,7 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player loses
 			closePopup();
 			player1Wins();
+			updateGameNum();
 		}
 	}
 });
@@ -810,13 +847,18 @@ export function resetPlayersScore() {
 	player2obj.score = 0;
 	document.querySelector("#p1-score-slr").textContent = 0;
 	document.querySelector("#p2-score-slr").textContent = 0;
-	console.log("reseting scores");
-	console.log({ player1obj, player2obj });
+	deadBallsArray.length = 0;
+	deadballsspan.textContent = "";
 }
 
 function updateGameNum() {
 	player1obj.gamenum += 1;
 	player2obj.gamenum += 1;
+	gamectr.textContent = "Game " + player1obj.gamenum;
+}
+function unUpdateGameNum() {
+	player1obj.gamenum -= 1;
+	player2obj.gamenum -= 1;
 	gamectr.textContent = "Game " + player1obj.gamenum;
 }
 
@@ -827,16 +869,16 @@ function if9BallIsPocketed() {
 	// deadctr.textContent = deadBallsArray.length + calcBallsRemaining();
 	updateGameNum();
 	openPopup();
-	document.querySelectorAll(".currPlayerName").forEach((item) => {
-		item.textContent = getCurrentPlayer();
-	});
+	// document.querySelectorAll(".currPlayerName").forEach((item) => {
+	// 	item.textContent = getCurrentPlayer();
+	// });
 }
 function if8BallIsPocketed() {
 	updateGameNum();
 	openPopup();
-	document.querySelectorAll(".currPlayerName").forEach((item) => {
-		item.textContent = getCurrentPlayer();
-	});
+	// document.querySelectorAll(".currPlayerName").forEach((item) => {
+	// 	item.textContent = getCurrentPlayer();
+	// });
 }
 
 const deadctr = document.querySelector("#deadctr");

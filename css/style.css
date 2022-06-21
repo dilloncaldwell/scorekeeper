@@ -182,7 +182,7 @@ h3 {
 .p2-stats {
 	display: flex;
 	justify-content: space-between;
-	font-size: x-small;
+	font-size: small;
 	flex-direction: row;
 }
 .stats {
@@ -244,7 +244,7 @@ h3 {
 	display: flex;
 	flex-direction: column;
 	font-size: small;
-	margin: 20px;
+	margin: 10px;
 	color: white;
 }
 .innings span {
@@ -256,7 +256,7 @@ h3 {
 	display: flex;
 	flex-direction: column;
 	font-size: small;
-	margin: 20px;
+	margin: 10px;
 	color: white;
 }
 .deadballs span {
@@ -265,7 +265,7 @@ h3 {
 	align-items: center;
 }
 .ballsmade {
-	font-size: x-small;
+	font-size: small;
 	text-align: center;
 	margin: 5px 0;
 }
@@ -287,6 +287,7 @@ h3 {
 	flex-direction: row-reverse;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 10px;
 }
 
 /* Buttons */
@@ -297,6 +298,7 @@ h3 {
 	padding: 5px;
 	color: white;
 	touch-action: manipulation;
+	line-height: 1.3rem;
 }
 .btn:hover {
 	background: rgb(169, 194, 251);
