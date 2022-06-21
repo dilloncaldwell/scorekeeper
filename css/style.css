@@ -182,7 +182,7 @@ h3 {
 .p2-stats {
 	display: flex;
 	justify-content: space-between;
-	font-size: small;
+	font-size: x-small;
 	flex-direction: row;
 }
 .stats {
