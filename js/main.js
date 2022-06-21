@@ -372,15 +372,29 @@ let deadBallsArray = [];
 deadballs.addEventListener("click", () => {
 	if (getCurrentPlayer() == "Player 1") {
 		let lastBall = player1obj.lastclicked;
-		deadBallsArray.push(lastBall);
-		undoAddBallToPlayer(lastBall, 1);
-		deadballsspan.textContent = deadBallsArray.join(", ");
+		if (lastBall == 0) {
+			return;
+		} else {
+			if (deadBallsArray.includes(lastBall)) {
+				return;
+			}
+			deadBallsArray.push(lastBall);
+			undoAddBallToPlayer(lastBall, 1);
+			deadballsspan.textContent = deadBallsArray.join(", ");
+		}
 	}
 	if (getCurrentPlayer() == "Player 2") {
 		let lastBall = player2obj.lastclicked;
-		deadBallsArray.push(lastBall);
-		undoAddBallToPlayer(lastBall, 1);
-		deadballsspan.textContent = deadBallsArray.join(", ");
+		if (lastBall == 0) {
+			return;
+		} else {
+			if (deadBallsArray.includes(lastBall)) {
+				return;
+			}
+			deadBallsArray.push(lastBall);
+			undoAddBallToPlayer(lastBall, 1);
+			deadballsspan.textContent = deadBallsArray.join(", ");
+		}
 	}
 });
 
@@ -790,9 +804,14 @@ confirmBtn.addEventListener("click", () => {
 export function resetPlayersScore() {
 	SCORE1 = 0;
 	SCORE2 = 0;
-	// console.log("reseting scores");
-	// player1obj.score = 0;
-	// player2obj.score = 0;
+	player1obj.points = 0;
+	player2obj.points = 0;
+	player1obj.score = 0;
+	player2obj.score = 0;
+	document.querySelector("#p1-score-slr").textContent = 0;
+	document.querySelector("#p2-score-slr").textContent = 0;
+	console.log("reseting scores");
+	console.log({ player1obj, player2obj });
 }
 
 function updateGameNum() {
