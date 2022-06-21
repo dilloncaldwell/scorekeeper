@@ -124,9 +124,6 @@ function resetInputErrors() {
 	errors.forEach((error) => {
 		error.textContent = "";
 	});
-	// document.querySelector("#singlep1error").textContent = "";
-	// document.querySelector("#singlep2error").textContent = "";
-	// document.querySelector("#singleraceto").textContent = "";
 	console.clear();
 }
 
@@ -532,16 +529,6 @@ function didPlayerMakeToHill(playerobj, score) {
 }
 
 function player1Wins() {
-	// if (whatGame() == "8-Ball") {
-	// 	if (player1obj.lastclicked == 8) {
-	// 		if8BallIsPocketed();
-	// 	}
-	// }
-	// if (player1obj.lastclicked == "9-Ball") {
-	// 	if (ballId == 9) {
-	// 		if9BallIsPocketed();
-	// 	}
-	// }
 	if (
 		player1obj.gameselect == "8ball" ||
 		(player1obj.gameselect == "9ball" && player1obj.racetype == "single")
@@ -602,16 +589,6 @@ function player1Wins() {
 }
 
 function player2Wins() {
-	// if (whatGame() == "8-Ball") {
-	// 	if (player2obj.lastclicked == 8) {
-	// 		if8BallIsPocketed();
-	// 	}
-	// }
-	// if (whatGame() == "9-Ball") {
-	// 	if (player2obj.lastclicked == 9) {
-	// 		if9BallIsPocketed();
-	// 	}
-	// }
 	if (
 		player2obj.gameselect == "8ball" ||
 		(player2obj.gameselect == "9ball" && player2obj.racetype == "single")

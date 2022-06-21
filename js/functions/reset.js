@@ -31,7 +31,7 @@ function reset(inningCount, inningCtr) {
 	p2TimeOutCtr.textContent = 0;
 	p1MadeBalls.textContent = "";
 	p2MadeBalls.textContent = "";
-	document.querySelector(".match-details-container").style.display = "grid";
+	document.querySelector(".match-details-container").style.display = "flex";
 	resetBalls(player1obj, player2obj);
 	document.getElementById("player1-name").value = "";
 	document.getElementById("player1-skill-level").value = "";
