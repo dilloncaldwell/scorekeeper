@@ -230,12 +230,17 @@
 		<!-- #scoreboard -->
 
 		<div id="winnerAlertMessage"></div>
-
 		<div id="button-container">
 			<div id="buttons">
 				<button id="switch-player" class="btn"><i class="fa-solid fa-repeat fa-lg"></i><br>Player</button>
 				<button id="defenseBtn" class="btn"><i class="fa-solid fa-user-shield fa-lg"></i> <br>Defense</button>
-				<button id="timeOutBtn" class="btn hideSingle"><i class="fa-solid fa-hand fa-lg"></i><br> Timeout</button>
+				<button id="timeOutBtn" class="btn hideSingle">
+					<span class="timeoutbtninfo">
+						<i class="fa-solid fa-hand fa-lg"></i>
+						<br> Timeout
+					</span>
+					<span class="display__time-left"></span>
+				</button>
 				<!-- <button>Fouls</button> -->
 				<button id="dead" class="btn hideIf8Ball"><i class="fa-solid fa-skull fa-lg"></i> <br>Deadball</button>
 			</div>

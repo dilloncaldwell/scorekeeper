@@ -124,7 +124,6 @@ function resetInputErrors() {
 	errors.forEach((error) => {
 		error.textContent = "";
 	});
-	console.clear();
 }
 
 function validateFormInputs(value) {
@@ -132,21 +131,18 @@ function validateFormInputs(value) {
 	if (value == "single") {
 		//race is single
 		if (singlePlayer1Name.value == "") {
-			console.log("player 1 name input must not be left blank");
 			document.querySelector("#singlep1error").textContent =
 				"player 1 name input must not be left blank";
 			singlePlayer1Name.focus();
 			return false;
 		}
 		if (singlePlayer2Name.value == "") {
-			console.log("player 2 name input must not be left blank");
 			document.querySelector("#singlep2error").textContent =
 				"player 2 name input must not be left blank";
 			singlePlayer2Name.focus();
 			return false;
 		}
 		if (singleRaceTo.value == "") {
-			console.log("race to must be given a value");
 			document.querySelector("#singleraceto").textContent =
 				"race to must be given a value";
 			singleRaceTo.focus();
@@ -182,7 +178,6 @@ function validateFormInputs(value) {
 			);
 			return false;
 		}
-		console.log("validateforminputs returned true");
 		return true;
 	}
 }
@@ -191,7 +186,6 @@ startmatch.addEventListener("click", (e) => {
 	e.preventDefault();
 	if (singlerace.checked) {
 		if (validateFormInputs("single") === false) {
-			console.error("validateforminputs returned false");
 			return;
 		}
 		matchDetailsContainer.style.display = "none";
@@ -212,7 +206,6 @@ startmatch.addEventListener("click", (e) => {
 	}
 	if (slrace.checked) {
 		if (validateFormInputs("sl") === false) {
-			console.error("validateforminputs returned false");
 			return;
 		}
 		if (slrace.checked && selectedGame9.checked) {
@@ -220,7 +213,6 @@ startmatch.addEventListener("click", (e) => {
 			arr9ballslrace.forEach((item) => {
 				item.classList.add("hide");
 			});
-			// console.log("adding hide class to hide9andslrace");
 		}
 		matchDetailsContainer.style.display = "none";
 		player1obj.racetype = "sl";
@@ -301,13 +293,11 @@ startmatch.addEventListener("click", (e) => {
 			balls[i].classList.toggle("clicked");
 			if (whatGame() == "8-Ball") {
 				if (ballId == 8) {
-					// if8BallIsPocketed();
 					openPopup();
 				}
 			}
 			if (whatGame() == "9-Ball") {
 				if (ballId == 9) {
-					// if9BallIsPocketed();
 					openPopup();
 				}
 			}
@@ -415,8 +405,6 @@ function IsSingleRace(bool) {
 // handling the scores in scoreboard
 // -----------------------------------
 
-// sl race
-
 //--------------------------
 // get current player
 //--------------------------
@@ -496,6 +484,44 @@ defenseBtn.addEventListener("click", () => {
 //--------------------------
 // TimeOut Button
 //--------------------------
+let countdown;
+let timeout = 60;
+const timeoutcountdown = document.querySelector("#timeoutcountdown");
+const timerDisplay = document.querySelector(".display__time-left");
+const timeoutbtninfo = document.querySelector(".timeoutbtninfo");
+
+function timer(seconds) {
+	// clear any existing timers
+	clearInterval(countdown);
+	const now = Date.now();
+	const then = now + seconds * 1000;
+	displayTimeLeft(seconds);
+	countdown = setInterval(() => {
+		const secondsLeft = Math.round((then - Date.now()) / 1000);
+		// check if we should stop it!
+		if (secondsLeft < 0) {
+			clearInterval(countdown);
+			return;
+		}
+		// display it
+		displayTimeLeft(secondsLeft);
+	}, 1000);
+}
+
+function displayTimeLeft(seconds) {
+	const remainderSeconds = seconds % 60;
+	const display = `${remainderSeconds < 10 ? "0" : ""}${remainderSeconds}`;
+	timerDisplay.textContent = display;
+	timeoutbtninfo.style.display = "none";
+	if (display == "00") {
+		timerDisplay.textContent = "";
+		timeoutbtninfo.style.display = "block";
+	}
+}
+function endTimer() {
+	timer(0);
+}
+
 timeOutBtn.addEventListener("click", () => {
 	let p1TimeoutLimit = player1obj.timeouts;
 	let p2TimeoutLimit = player2obj.timeouts;
@@ -511,7 +537,12 @@ timeOutBtn.addEventListener("click", () => {
 			p2TimeOutCtr.textContent = p2TimeOutCount;
 		}
 	}
-	// console.log(p1TimeoutLimit, p2TimeoutLimit);
+	if (timeoutbtninfo.style.display == "none") {
+		// console.log("timeoutBtninfo is hidden");
+		endTimer();
+	} else {
+		timer(60);
+	}
 });
 
 //-----------------------------
@@ -533,10 +564,10 @@ function player1Wins() {
 		player1obj.gameselect == "8ball" ||
 		(player1obj.gameselect == "9ball" && player1obj.racetype == "single")
 	) {
-		console.log("game is not slrace of 9-ball...");
+		// console.log("game is not slrace of 9-ball...");
 		//did player make to hill
 		if (didPlayerMakeToHill(player1obj, SCORE1)) {
-			console.log("player made it to hill...");
+			// console.log("player made it to hill...");
 			player1obj.score = ++SCORE1;
 			p1score.textContent = SCORE1;
 			p1s.textContent = SCORE1;
@@ -567,9 +598,9 @@ function player1Wins() {
 	} else if (
 		(player1obj.gameselect = "9ball" && player1obj.racetype == "sl")
 	) {
-		console.log("game is sl race of 9-ball");
+		// console.log("game is sl race of 9-ball");
 		if (player1obj.points >= player1obj.race) {
-			console.log("points are equal or greater than race...");
+			// console.log("points are equal or greater than race...");
 			let mp = get9BallMP(Number(player2obj.sl), player2obj.points);
 			winnerMessage.innerHTML = `
             <h1>Congrats! ${player1obj.name} Wins!</h1>
@@ -577,7 +608,7 @@ function player1Wins() {
             `;
 			disableBalls();
 		} else {
-			console.log("points have not met race... next game");
+			// console.log("points have not met race... next game");
 			player1obj.turn = true;
 			player2obj.turn = false;
 			resetBalls(player1obj, player2obj);
@@ -593,10 +624,10 @@ function player2Wins() {
 		player2obj.gameselect == "8ball" ||
 		(player2obj.gameselect == "9ball" && player2obj.racetype == "single")
 	) {
-		console.log("game is not slrace of 9-ball...");
+		// console.log("game is not slrace of 9-ball...");
 		//did player make to hill
 		if (didPlayerMakeToHill(player2obj, SCORE2)) {
-			console.log("player made it to hill...");
+			// console.log("player made it to hill...");
 			player2obj.score = ++SCORE2;
 			p2score.textContent = SCORE2;
 			p2s.textContent = SCORE2;
@@ -627,9 +658,9 @@ function player2Wins() {
 	} else if (
 		(player2obj.gameselect = "9ball" && player2obj.racetype == "sl")
 	) {
-		console.log("game is sl race of 9-ball");
+		// console.log("game is sl race of 9-ball");
 		if (player2obj.points >= player2obj.race) {
-			console.log("points are equal or greater than race...");
+			// console.log("points are equal or greater than race...");
 			let mp = get9BallMP(Number(player1obj.sl), player1obj.points);
 			winnerMessage.innerHTML = `
             <h1>Congrats! ${player2obj.name} Wins!</h1>
@@ -637,7 +668,7 @@ function player2Wins() {
             `;
 			disableBalls();
 		} else {
-			console.log("points have not met race... next game");
+			// console.log("points have not met race... next game");
 			player2obj.turn = true;
 			player1obj.turn = false;
 			resetBalls(player1obj, player2obj);
