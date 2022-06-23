@@ -5,6 +5,7 @@ import printBallsToHTML from "./functions/printBallstoHTML.js";
 import resetBalls from "./functions/resetBalls.js";
 import reset from "./functions/reset.js";
 import get9BallMP from "./functions/get9BallMP.js";
+import { TEST } from "./functions/tests.js";
 
 //------------------------------------------------------------
 //------------------------------------------------------------
@@ -303,6 +304,8 @@ startmatch.addEventListener("click", (e) => {
 			}
 		});
 	}
+
+	TEST.getPlayerInfo("starting match...");
 });
 
 function capitalizeFirstLetter(string) {
@@ -445,25 +448,43 @@ function incrementInnings(playerobj) {
 //--------------------------
 // Switch player button
 //--------------------------
-function changeTurns(playerobj) {
-	//this function sets the players turn boolean to opposite
-	playerobj == player1obj
-		? ((player1obj.turn = false), (player2obj.turn = true))
-		: ((player1obj.turn = true), (player2obj.turn = false));
-	// console.log({ player1obj, player2obj });
-}
+// function changeTurns(playerobj) {
+// 	//takes the current playerobj
+// 	//this function sets the players turn boolean to opposite
+// 	playerobj == player1obj
+// 		? ((player1obj.turn = false), (player2obj.turn = true))
+// 		: ((player1obj.turn = true), (player2obj.turn = false));
+// 	TEST.getPlayerInfo("changing turns...");
+// }
 function toggleActiveClass() {
 	player1Details.classList.toggle("activeTurn");
 	player2Details.classList.toggle("activeTurn");
 }
 switchPlayer.addEventListener("click", () => {
-	console.log({ player1obj, player2obj });
-	if (getCurrentPlayer() == "Player 1") {
-		changeTurns(player1obj);
+	TEST.getPlayerInfo("player switch");
+	let p1TimeoutLimit = player1obj.timeouts;
+	let p2TimeoutLimit = player2obj.timeouts;
+	console.log("p1 turn bool ", player1obj.turn);
+	console.log("p2 turn bool ", player2obj.turn);
+	endTimer();
+	if (player1obj.turn == true) {
+		if (p2TimeOutCount >= p2TimeoutLimit) {
+			timeOutBtn.classList.add("clicked");
+		} else {
+			timeOutBtn.classList.remove("clicked");
+		}
+		player1obj.turn = false;
+		player2obj.turn = true;
 		toggleActiveClass();
 		incrementInnings(player1obj);
-	} else if (getCurrentPlayer() == "Player 2") {
-		changeTurns(player2obj);
+	} else if (player2obj.turn == true) {
+		if (p1TimeOutCount >= p1TimeoutLimit) {
+			timeOutBtn.classList.add("clicked");
+		} else {
+			timeOutBtn.classList.remove("clicked");
+		}
+		player1obj.turn = true;
+		player2obj.turn = false;
 		toggleActiveClass();
 		incrementInnings(player2obj);
 	}
@@ -513,9 +534,20 @@ function displayTimeLeft(seconds) {
 	const display = `${remainderSeconds < 10 ? "0" : ""}${remainderSeconds}`;
 	timerDisplay.textContent = display;
 	timeoutbtninfo.style.display = "none";
+	timeOutBtn.style.backgroundColor = "green";
 	if (display == "00") {
 		timerDisplay.textContent = "";
 		timeoutbtninfo.style.display = "block";
+		timeOutBtn.style.backgroundColor = "rgb(3, 41, 129)";
+		if (player1obj.turn == true) {
+			if (player1obj.timeoutcount >= player1obj.timeouts) {
+				timeOutBtn.classList.add("clicked");
+			}
+		} else if (player2obj.turn == true) {
+			if (player2obj.timeoutcount >= player2obj.timeouts) {
+				timeOutBtn.classList.add("clicked");
+			}
+		}
 	}
 }
 function endTimer() {
@@ -525,25 +557,47 @@ function endTimer() {
 timeOutBtn.addEventListener("click", () => {
 	let p1TimeoutLimit = player1obj.timeouts;
 	let p2TimeoutLimit = player2obj.timeouts;
-	if (player1obj.turn == true) {
-		++p1TimeOutCount;
-		if (p1TimeOutCount <= p1TimeoutLimit) {
-			p1TimeOutCtr.textContent = p1TimeOutCount;
-		}
-	}
-	if (player2obj.turn == true) {
-		++p2TimeOutCount;
-		if (p2TimeOutCount <= p2TimeoutLimit) {
-			p2TimeOutCtr.textContent = p2TimeOutCount;
-		}
-	}
+
 	if (timeoutbtninfo.style.display == "none") {
-		// console.log("timeoutBtninfo is hidden");
+		console.log("timeout display is none");
 		endTimer();
+		if (
+			p1TimeOutCount >= p1TimeoutLimit ||
+			p2TimeOutCount >= p2TimeoutLimit
+		) {
+			timeOutBtn.classList.add("clicked");
+			console.log(
+				"if true timeout is equal to limit timeout eventlistener"
+			);
+		} else {
+			timeOutBtn.classList.remove("clicked");
+			console.log(
+				"else false timeout is equal to limit timeout eventlistener"
+			);
+		}
 	} else {
-		timer(60);
+		if (player1obj.turn == true) {
+			if (p1TimeOutCount < p1TimeoutLimit) {
+				++p1TimeOutCount;
+				++player1obj.timeoutcount;
+				p1TimeOutCtr.textContent = p1TimeOutCount;
+				timer(60);
+			}
+		}
+		if (player2obj.turn == true) {
+			if (p2TimeOutCount < p2TimeoutLimit) {
+				++p2TimeOutCount;
+				++player2obj.timeoutcount;
+				p2TimeOutCtr.textContent = p2TimeOutCount;
+				timer(60);
+			}
+		}
 	}
 });
+
+//--------------------------------
+// shot clock
+//--------------------------------
 
 //-----------------------------
 // Winner functions
@@ -879,6 +933,18 @@ export function resetPlayersScore() {
 	player2obj.points = 0;
 	player1obj.score = 0;
 	player2obj.score = 0;
+	player1obj.sl = 0;
+	player2obj.sl = 0;
+	player1obj.name = "Player 1";
+	player2obj.name = "Player 2";
+	player1obj.race = 0;
+	player2obj.race = 0;
+	player1obj.timeouts = 0;
+	player2obj.timeouts = 0;
+	player1obj.timeoutcount = 0;
+	player2obj.timeoutcount = 0;
+	player1obj.gameselect = "";
+	player2obj.gameselect = "";
 	document.querySelector("#p1-score-slr").textContent = 0;
 	document.querySelector("#p2-score-slr").textContent = 0;
 	deadBallsArray.length = 0;

@@ -10,6 +10,7 @@ export default class Player {
 		this.race = 0;
 		this.score = 0;
 		this.points = 0;
+		this.timeoutcount = 0;
 		this.timeouts = 1;
 		this.gamenum = 1;
 		this.ballsMade = [];
