@@ -1,0 +1,154 @@
+/* -------------------
+* Balls
+---------------------- */
+#balls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 30px 0;
+	width: 355px;
+}
+.ball {
+	padding: 20px 20px;
+	border-radius: 50%;
+	width: 65px;
+	height: 65px;
+	border: 1px solid black;
+	box-shadow: inset 0 3px 2px -4px #000000;
+	touch-action: manipulation;
+}
+#balls .ball:hover {
+	box-shadow: inset 0 5px 8px -3px #000000;
+	cursor: pointer;
+}
+
+/* When then ball is clicked */
+.clicked {
+	opacity: 0.3;
+	box-shadow: inset 0 5px 8px -3px #000000;
+}
+
+/* -------------------
+* Ball Colors
+* ---------------------- */
+/* ball inside - white circle */
+#balls .ball span {
+	border-radius: 50%;
+	background: white;
+	color: black;
+	padding: 4px;
+}
+
+#balls .ballSingleNum span {
+	padding: 5px 7px;
+}
+
+/* Ball background color - solids & stripes */
+#balls .ball-1 {
+	background: yellow;
+}
+#balls .ball-2 {
+	background: blue;
+}
+#balls .ball-3 {
+	background: red;
+}
+#balls .ball-4 {
+	background: purple;
+}
+#balls .ball-5 {
+	background: orange;
+}
+#balls .ball-6 {
+	background: green;
+}
+#balls .ball-7 {
+	background: darkred;
+}
+#balls .ball-8 {
+	background: black;
+}
+#balls .ball-9 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		rgba(244, 228, 12, 1) 23%,
+		rgba(244, 228, 12, 1) 49%,
+		rgba(244, 228, 12, 1) 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-10 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		blue 23%,
+		blue 49%,
+		blue 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-11 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		red 23%,
+		red 49%,
+		red 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-12 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		purple 23%,
+		purple 49%,
+		purple 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-13 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		orange 23%,
+		orange 49%,
+		orange 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-14 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		green 23%,
+		green 49%,
+		green 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+#balls .ball-15 {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 23%,
+		darkred 23%,
+		darkred 49%,
+		darkred 76%,
+		rgba(255, 255, 255, 1) 76%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
