@@ -11,7 +11,7 @@ export default class Player {
 		this.score = 0;
 		this.points = 0;
 		this.timeoutcount = 0;
-		this.timeouts = 1;
+		this.timeoutlimit = 1;
 		this.gamenum = 1;
 		this.ballsMade = [];
 		this.gameselect = ""; //8ball or 9ball
