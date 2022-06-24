@@ -75,10 +75,11 @@ header button:hover {
 	position: fixed;
 	right: 0;
 	top: 0;
-	width: 350px;
+	width: 375px;
 	background-color: white;
 	height: 100vh;
 	z-index: 1001;
+	overflow-y: auto;
 }
 
 .matchstats-header {
@@ -90,6 +91,8 @@ header button:hover {
 	align-items: center;
 	flex: 1;
 	padding: 10px 0;
+	position: sticky;
+	top: 0;
 }
 .matchstats-header h2 {
 	color: white;
@@ -102,6 +105,9 @@ header button:hover {
 .matchstats-header i:hover {
 	color: rgb(169, 194, 251);
 	cursor: pointer;
+}
+.matchstats-details {
+	padding: 1em;
 }
 
 .matchsettings {
@@ -148,25 +154,110 @@ header button:hover {
 	cursor: pointer;
 }
 
+/* ------------------------------- */
+/* Accordian styles */
+/* ------------------------------- */
+
+#testing .row {
+	display: flex;
+}
+#testing .row .col {
+	flex: 1;
+}
+
+#testing .tabs {
+	/* border-radius: 8px; */
+	overflow: hidden;
+	box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+}
+
+#testing .tab {
+	width: 100%;
+	color: white;
+	overflow: hidden;
+}
+#testing .tab-label {
+	display: flex;
+	justify-content: space-between;
+	padding: 1em;
+	background: #2c3e50;
+	font-weight: bold;
+	cursor: pointer;
+	/* Icon */
+}
+#testing .tab-label:hover {
+	background: rgb(34, 68, 101);
+}
+#testing .tab-label::after {
+	content: "❯";
+	width: 1em;
+	height: 1em;
+	text-align: center;
+	/* transition: all 0.35s; */
+}
+#testing .tab-content {
+	max-height: 0;
+	padding: 0 1em;
+	color: rgb(34, 68, 101);
+	background: white;
+	/* transition: all 0.35s; */
+}
+#testing .tab-close {
+	display: flex;
+	justify-content: flex-end;
+	padding: 1em;
+	font-size: 0.75em;
+	background: rgb(34, 68, 101);
+	cursor: pointer;
+}
+#testing .tab-close:hover {
+	background: #1a252f;
+}
+#testing input {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+#testing input:checked + .tab-label {
+	background: rgb(34, 68, 101);
+}
+#testing input:checked + .tab-label::after {
+	transform: rotate(90deg);
+}
+#testing input:checked ~ .tab-content {
+	max-height: 100vh;
+	padding: 1em;
+}
+
+/* ------------------------------- */
+/* End Accordian styles */
+/* ------------------------------- */
+
 .show {
 	visibility: visible;
 	transition: all 1s ease-in;
 }
 .gamedetails {
 	text-align: center;
-	margin-top: 10px;
+	/* margin-top: 1em; */
 }
 .game-stats {
 	display: flex;
 	flex-direction: column;
 	row-gap: 5px;
 }
+
 .gamestats,
 .p1gamestats,
 .p2gamestats {
-	display: flex;
-	justify-content: space-evenly;
+	display: inline-grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	column-gap: 19px;
 	flex: 1;
+}
+.p1gamestats,
+.p2gamestats {
+	column-gap: 19px;
 }
 .gamestats {
 	font-weight: bold;
@@ -176,6 +267,7 @@ header button:hover {
 	justify-content: space-around;
 	flex: 1;
 	font-weight: bold;
+	margin-top: 10px;
 }
 
 /* Match Details Container */

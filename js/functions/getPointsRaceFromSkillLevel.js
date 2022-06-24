@@ -1,5 +1,5 @@
 import { player1obj, player2obj } from "./Player.js";
-
+import Game from "./Game.js";
 //---------------------------------------
 // Determine Player points races by skill level
 // 9-ball
@@ -75,7 +75,15 @@ function getPointsRaceFromSkillLevel(p1SL, p2SL) {
 	}
 	slp1p.textContent = player1obj.race;
 	slp2p.textContent = player2obj.race;
-	console.log({ player1obj, player2obj });
+	// console.log({ player1obj, player2obj });
+	// let Match = [];
+	// let maxgames = Number(player1obj.race) + Number(player2obj.race) - 1;
+
+	// for (let i = 1; i <= maxgames; i++) {
+	// 	let game = new Game();
+	// 	Match.push({ game });
+	// }
+	// console.log(Match);
 }
 
 export default getPointsRaceFromSkillLevel;

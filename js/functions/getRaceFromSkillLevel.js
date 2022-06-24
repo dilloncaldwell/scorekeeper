@@ -1,5 +1,5 @@
 import { player1obj, player2obj } from "./Player.js";
-
+import Game from "./Game.js";
 //---------------------------------------
 // Determine Player races by skill level
 // 8-ball
@@ -132,10 +132,19 @@ function getRaceFromSkillLevel(p1SL, p2SL) {
 			}
 		}
 	}
-	Number(player1obj);
-	Number(player2obj);
+	// Number(player1obj);
+	// Number(player2obj);
 	slp1r.textContent = player1obj.race;
 	slp2r.textContent = player2obj.race;
+
+	let Match = [];
+	let maxgames = Number(player1obj.race) + Number(player2obj.race) - 1;
+
+	for (let i = 1; i <= maxgames; i++) {
+		let game = new Game();
+		Match.push({ game });
+	}
+	console.log(Match);
 }
 
 export default getRaceFromSkillLevel;

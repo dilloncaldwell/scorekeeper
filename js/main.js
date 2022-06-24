@@ -1,3 +1,4 @@
+import Game from "./functions/Game.js";
 import Player, { player1obj, player2obj } from "./functions/Player.js";
 import getRaceFromSkillLevel from "./functions/getRaceFromSkillLevel.js";
 import getPointsRaceFromSkillLevel from "./functions/getPointsRaceFromSkillLevel.js";
@@ -204,6 +205,12 @@ startmatch.addEventListener("click", (e) => {
 		player2obj.race = singleRaceTo.value;
 		slp1r.textContent = player1obj.race;
 		slp2r.textContent = player2obj.race;
+		// create game instances
+		for (let i = 1; i <= singleRaceTo.value; i++) {
+			let game = new Game();
+			Match.push({ game });
+		}
+		console.log(Match);
 	}
 	if (slrace.checked) {
 		if (validateFormInputs("sl") === false) {
@@ -1009,6 +1016,12 @@ function calcBallsRemaining() {
 
 const gamectr = document.querySelector("#gamectr");
 gamectr.textContent = "Game " + player1obj.gamenum;
+
+// --------------------------
+// create a game obj
+// --------------------------
+
+const Match = [];
 
 //----------------------------------------------
 // balls made array update when ball is clicked
