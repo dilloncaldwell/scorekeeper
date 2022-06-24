@@ -128,7 +128,7 @@ header button:hover {
 	width: 350px;
 	background-color: white;
 	height: 100vh;
-	z-index: 1001;
+	/* z-index: 1001; */
 }
 
 .matchsettings-header {
@@ -140,6 +140,7 @@ header button:hover {
 	align-items: center;
 	flex: 1;
 	padding: 10px 0;
+	z-index: 1002;
 }
 .matchsettings-header h2 {
 	color: white;
@@ -195,6 +196,7 @@ header button:hover {
 	height: 1em;
 	text-align: center;
 	/* transition: all 0.35s; */
+	z-index: 1;
 }
 #testing .tab-content {
 	max-height: 0;
@@ -227,7 +229,7 @@ header button:hover {
 }
 #testing input:checked ~ .tab-content {
 	max-height: 100vh;
-	padding: 1em;
+	padding: 1em 0;
 }
 
 /* ------------------------------- */
