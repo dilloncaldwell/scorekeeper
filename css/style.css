@@ -161,11 +161,15 @@ header button:hover {
 	flex-direction: column;
 	row-gap: 5px;
 }
+.gamestats,
 .p1gamestats,
 .p2gamestats {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	flex: 1;
+}
+.gamestats {
+	font-weight: bold;
 }
 .gametotal {
 	display: flex;
