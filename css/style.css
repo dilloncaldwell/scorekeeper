@@ -35,7 +35,7 @@ header {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	background: rgb(18, 36, 54);
+	background: rgb(3, 41, 129);
 	border-bottom: 1px solid #ccc;
 	flex: 1;
 	padding: 10px 0;
@@ -207,7 +207,7 @@ header button:hover {
 	justify-content: flex-end;
 	padding: 1em;
 	font-size: 0.75em;
-	background: rgb(34, 68, 101);
+	background: rgb(18, 36, 54);
 	cursor: pointer;
 }
 #testing .tab-close:hover {
