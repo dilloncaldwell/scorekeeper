@@ -42,18 +42,138 @@ header {
 }
 header button {
 	color: white;
-	background: transparent;
-	border: 1px solid;
+	background: transparent !important;
+	border: none !important;
 	height: 100%;
-	padding: 10px;
+	padding: 5px;
 }
-.settings,
-.history {
+header button:hover {
+	color: rgb(169, 194, 251) !important;
+}
+.viewsettings,
+.viewstats {
 	background: rgb(18, 36, 54);
 }
 .app-wrapper {
 	margin: 1em;
 }
+
+/* header popups */
+
+.matchstats {
+	background-color: rgba(20, 28, 73, 0.7);
+	width: 100%;
+	z-index: 1000;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	visibility: hidden;
+}
+.matchstats-wrapper {
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 350px;
+	background-color: white;
+	height: 100vh;
+	z-index: 1001;
+}
+
+.matchstats-header {
+	background-color: rgb(3, 41, 129);
+	text-align: center;
+	display: flex;
+	color: white;
+	justify-content: space-around;
+	align-items: center;
+	flex: 1;
+	padding: 10px 0;
+}
+.matchstats-header h2 {
+	color: white;
+	justify-self: center;
+	flex: 1;
+}
+.matchstats-header i {
+	padding: 0 10px 0 0;
+}
+.matchstats-header i:hover {
+	color: rgb(169, 194, 251);
+	cursor: pointer;
+}
+
+.matchsettings {
+	background-color: rgba(20, 28, 73, 0.7);
+	width: 100%;
+	z-index: 1000;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	visibility: hidden;
+}
+.matchsettings-wrapper {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 350px;
+	background-color: white;
+	height: 100vh;
+	z-index: 1001;
+}
+
+.matchsettings-header {
+	background-color: rgb(3, 41, 129);
+	text-align: center;
+	display: flex;
+	color: white;
+	justify-content: space-around;
+	align-items: center;
+	flex: 1;
+	padding: 10px 0;
+}
+.matchsettings-header h2 {
+	color: white;
+	justify-self: center;
+	flex: 1;
+}
+.matchsettings-header i {
+	padding: 0 10px 0 0;
+}
+.matchsettings-header i:hover {
+	color: rgb(169, 194, 251);
+	cursor: pointer;
+}
+
+.show {
+	visibility: visible;
+	transition: all 1s ease-in;
+}
+.gamedetails {
+	text-align: center;
+	margin-top: 10px;
+}
+.game-stats {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+}
+.p1gamestats,
+.p2gamestats {
+	display: flex;
+	justify-content: space-around;
+	flex: 1;
+}
+.gametotal {
+	display: flex;
+	justify-content: space-around;
+	flex: 1;
+	font-weight: bold;
+}
+
 /* Match Details Container */
 .title {
 	color: rgb(3, 41, 129);

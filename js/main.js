@@ -1076,6 +1076,37 @@ function undoAddBallToPlayer(ballId, ballPoints) {
 	}
 }
 
+// ------------------------------------
+// view stats popup
+// ------------------------------------
+const viewStatsBtn = document.querySelector(".viewstats");
+const matchstats = document.querySelector(".matchstats");
+const exitStatsBtn = document.querySelector(".exitstatsbtn");
+
+viewStatsBtn.addEventListener("click", () => {
+	console.log("stats button clicked");
+	matchstats.classList.toggle("show");
+});
+
+exitStatsBtn.addEventListener("click", () => {
+	matchstats.classList.toggle("show");
+});
+
+// ------------------------------------
+// view settings popup
+// ------------------------------------
+const viewSettingsBtn = document.querySelector(".viewsettings");
+const matchsettings = document.querySelector(".matchsettings");
+const exitSettingsBtn = document.querySelector(".exitsettingsbtn");
+
+viewSettingsBtn.addEventListener("click", () => {
+	console.log("stats button clicked");
+	matchsettings.classList.toggle("show");
+});
+exitSettingsBtn.addEventListener("click", () => {
+	matchsettings.classList.toggle("show");
+});
+
 //------------------
 // reset ScoreBoard
 //------------------
