@@ -1,12 +1,12 @@
-import Game from "./functions/Game.js";
-import Player, { player1obj, player2obj } from "./functions/Player.js";
-import getRaceFromSkillLevel from "./functions/getRaceFromSkillLevel.js";
-import getPointsRaceFromSkillLevel from "./functions/getPointsRaceFromSkillLevel.js";
-import printBallsToHTML from "./functions/printBallstoHTML.js";
-import resetBalls from "./functions/resetBalls.js";
-import reset from "./functions/reset.js";
-import get9BallMP from "./functions/get9BallMP.js";
-import { TEST } from "./functions/tests.js";
+import Game from "./modules/Game.js";
+import Player, { player1obj, player2obj } from "./modules/Player.js";
+import getRaceFromSkillLevel from "./modules/getRaceFromSkillLevel.js";
+import getPointsRaceFromSkillLevel from "./modules/getPointsRaceFromSkillLevel.js";
+import printBallsToHTML from "./modules/printBallstoHTML.js";
+import resetBalls from "./modules/resetBalls.js";
+import reset from "./modules/reset.js";
+import get9BallMP from "./modules/get9BallMP.js";
+import { TEST } from "./modules/tests.js";
 
 //------------------------------------------------------------
 //------------------------------------------------------------
@@ -633,14 +633,14 @@ timeOutBtn.addEventListener("click", (e) => {
 			if (player1obj.timeoutcount < p1TimeoutLimit) {
 				++player1obj.timeoutcount;
 				p1TimeOutCtr.textContent = player1obj.timeoutcount;
-				timer(10);
+				timer(60);
 			}
 		}
 		if (player2obj.turn == true) {
 			if (player2obj.timeoutcount < p2TimeoutLimit) {
 				player2obj.timeoutcount += 1;
 				p2TimeOutCtr.textContent = player2obj.timeoutcount;
-				timer(10);
+				timer(60);
 			}
 		}
 	}
