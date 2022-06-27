@@ -455,11 +455,13 @@ function incrementInnings(playerobj) {
 const increase = document.querySelector(".increase");
 const decrease = document.querySelector(".decrease");
 
-increase.addEventListener("click", () => {
+increase.addEventListener("click", (e) => {
+	e.preventDefault();
 	inningCount++;
 	inningCtr.textContent = inningCount;
 });
-decrease.addEventListener("click", () => {
+decrease.addEventListener("click", (e) => {
+	e.preventDefault();
 	if (inningCount > 0) {
 		inningCount--;
 		inningCtr.textContent = inningCount;
@@ -481,7 +483,8 @@ function toggleActiveClass() {
 	player1Details.classList.toggle("activeTurn");
 	player2Details.classList.toggle("activeTurn");
 }
-switchPlayer.addEventListener("click", () => {
+switchPlayer.addEventListener("click", (e) => {
+	e.preventDefault();
 	TEST.getPlayerInfo("player switch");
 	let p1TimeoutLimit = player1obj.timeoutlimit;
 	let p2TimeoutLimit = player2obj.timeoutlimit;
@@ -512,7 +515,8 @@ switchPlayer.addEventListener("click", () => {
 //--------------------------
 // Defense Button
 //--------------------------
-defenseBtn.addEventListener("click", () => {
+defenseBtn.addEventListener("click", (e) => {
+	e.preventDefault();
 	if (player1obj.turn == true) {
 		p1DefenseCtr.textContent = ++p1DefenseCount;
 	}
@@ -524,7 +528,8 @@ defenseBtn.addEventListener("click", () => {
 const defincrease = document.querySelector(".defincrease");
 const defdecrease = document.querySelector(".defdecrease");
 
-defincrease.addEventListener("click", () => {
+defincrease.addEventListener("click", (e) => {
+	e.preventDefault();
 	if (player1obj.turn == true) {
 		p1DefenseCtr.textContent = ++p1DefenseCount;
 	}
@@ -532,7 +537,8 @@ defincrease.addEventListener("click", () => {
 		p2DefenseCtr.textContent = ++p2DefenseCount;
 	}
 });
-defdecrease.addEventListener("click", () => {
+defdecrease.addEventListener("click", (e) => {
+	e.preventDefault();
 	if (player1obj.turn == true) {
 		if (p1DefenseCount > 0) {
 			p1DefenseCtr.textContent = --p1DefenseCount;
@@ -598,7 +604,8 @@ function endTimer() {
 	timer(0);
 }
 
-timeOutBtn.addEventListener("click", () => {
+timeOutBtn.addEventListener("click", (e) => {
+	e.preventDefault();
 	let p1TimeoutLimit = player1obj.timeoutlimit;
 	let p2TimeoutLimit = player2obj.timeoutlimit;
 
