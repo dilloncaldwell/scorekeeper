@@ -492,7 +492,7 @@ header button:hover {
 .scores {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	/* gap: 10px; */
 }
 .innings {
 	display: flex;
@@ -510,7 +510,7 @@ header button:hover {
 	display: flex;
 	flex-direction: column;
 	font-size: small;
-	margin: 10px;
+	/* margin: 10px; */
 	color: white;
 }
 .deadballs span {
