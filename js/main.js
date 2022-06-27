@@ -1170,7 +1170,15 @@ exitSettingsBtn.addEventListener("click", () => {
 // reset ScoreBoard
 //------------------
 resetScoreBoard.addEventListener("click", () => {
-	reset(inningCount, inningCtr);
+	if (
+		confirm(
+			"Are you sure you want to restart the match all data will be lossed?"
+		)
+	) {
+		reset(inningCount, inningCtr);
+	} else {
+		return;
+	}
 });
 
 // do the skillLevelChart modal to javascript make a different page and import it so it doesn't bloat index
