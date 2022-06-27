@@ -506,6 +506,14 @@ header button:hover {
 	justify-content: center;
 	align-items: center;
 }
+.inningupdater {
+	display: flex;
+	justify-content: stretch;
+	align-content: center;
+	column-gap: 5px;
+	row-gap: 5px;
+	flex: 1;
+}
 .deadballs {
 	display: flex;
 	flex-direction: column;
@@ -573,11 +581,25 @@ header button:hover {
 	padding: 10px 20px;
 }
 .smallbtn {
-	padding: 0 15px;
+	padding: 0 10px;
 	margin: 2px 0;
 }
 #buttons .defbuttonwrapper button {
 	height: 25px;
+	width: 100%;
+}
+.defbuttonwrapper {
+	display: flex;
+	justify-content: stretch;
+	align-content: center;
+	column-gap: 5px;
+	row-gap: 5px;
+	flex: 1;
+}
+.defenseBtnGroup {
+	display: flex;
+	flex-direction: column;
+	row-gap: 3px;
 }
 .hide {
 	display: none;
