@@ -500,6 +500,7 @@ header button:hover {
 	font-size: small;
 	margin: 10px;
 	color: white;
+	row-gap: 5px;
 }
 .innings span {
 	display: flex;
@@ -513,6 +514,10 @@ header button:hover {
 	column-gap: 5px;
 	row-gap: 5px;
 	flex: 1;
+	flex-wrap: nowrap;
+}
+.inningupdater button {
+	width: 100%;
 }
 .deadballs {
 	display: flex;
@@ -581,7 +586,7 @@ header button:hover {
 	padding: 10px 20px;
 }
 .smallbtn {
-	padding: 0 10px;
+	padding: 0 8px;
 	margin: 2px 0;
 }
 #buttons .defbuttonwrapper button {
@@ -595,6 +600,7 @@ header button:hover {
 	column-gap: 5px;
 	row-gap: 5px;
 	flex: 1;
+	flex-wrap: nowrap;
 }
 .defenseBtnGroup {
 	display: flex;

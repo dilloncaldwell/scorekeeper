@@ -485,6 +485,7 @@ function toggleActiveClass() {
 }
 switchPlayer.addEventListener("click", (e) => {
 	e.preventDefault();
+	document.activeElement = null;
 	TEST.getPlayerInfo("player switch");
 	let p1TimeoutLimit = player1obj.timeoutlimit;
 	let p2TimeoutLimit = player2obj.timeoutlimit;
