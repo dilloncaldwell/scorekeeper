@@ -231,6 +231,7 @@ header button:hover {
 #testing input:checked ~ .tab-content {
 	max-height: 100vh;
 	padding: 1em 0;
+	margin: 1em 0.5em;
 }
 
 /* ------------------------------- */
