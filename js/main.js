@@ -452,6 +452,18 @@ function incrementInnings(playerobj) {
 	}
 }
 
+const increase = document.querySelector(".increase");
+const decrease = document.querySelector(".decrease");
+
+increase.addEventListener("click", () => {
+	inningCount++;
+	inningCtr.textContent = inningCount;
+});
+decrease.addEventListener("click", () => {
+	inningCount--;
+	inningCtr.textContent = inningCount;
+});
+
 //--------------------------
 // Switch player button
 //--------------------------
