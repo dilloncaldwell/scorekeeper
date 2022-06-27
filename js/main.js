@@ -479,13 +479,13 @@ decrease.addEventListener("click", (e) => {
 // 		: ((player1obj.turn = true), (player2obj.turn = false));
 // 	TEST.getPlayerInfo("changing turns...");
 // }
+
 function toggleActiveClass() {
 	player1Details.classList.toggle("activeTurn");
 	player2Details.classList.toggle("activeTurn");
 }
 switchPlayer.addEventListener("click", (e) => {
-	e.preventDefault();
-	document.activeElement = null;
+	// e.preventDefault();
 	TEST.getPlayerInfo("player switch");
 	let p1TimeoutLimit = player1obj.timeoutlimit;
 	let p2TimeoutLimit = player2obj.timeoutlimit;

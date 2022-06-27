@@ -567,7 +567,7 @@ header button:hover {
 	touch-action: manipulation;
 	line-height: 1.25rem;
 }
-.btn:hover {
+.btn:active {
 	background: rgb(169, 194, 251);
 	color: rgb(3, 41, 129);
 	cursor: pointer;
