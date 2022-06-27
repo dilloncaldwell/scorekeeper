@@ -559,10 +559,7 @@ header button:hover {
 	color: rgb(3, 41, 129);
 	cursor: pointer;
 }
-.smallbtn {
-	padding: 0 15px;
-	margin: 2px 0;
-}
+
 #buttons {
 	display: flex;
 	flex-direction: column;
@@ -574,6 +571,13 @@ header button:hover {
 }
 .radiobtn {
 	padding: 10px 20px;
+}
+.smallbtn {
+	padding: 0 15px;
+	margin: 2px 0;
+}
+#buttons .defbuttonwrapper button {
+	height: 25px;
 }
 .hide {
 	display: none;

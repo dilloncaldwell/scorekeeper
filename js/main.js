@@ -460,8 +460,10 @@ increase.addEventListener("click", () => {
 	inningCtr.textContent = inningCount;
 });
 decrease.addEventListener("click", () => {
-	inningCount--;
-	inningCtr.textContent = inningCount;
+	if (inningCount > 0) {
+		inningCount--;
+		inningCtr.textContent = inningCount;
+	}
 });
 
 //--------------------------
@@ -516,6 +518,30 @@ defenseBtn.addEventListener("click", () => {
 	}
 	if (player2obj.turn == true) {
 		p2DefenseCtr.textContent = ++p2DefenseCount;
+	}
+});
+
+const defincrease = document.querySelector(".defincrease");
+const defdecrease = document.querySelector(".defdecrease");
+
+defincrease.addEventListener("click", () => {
+	if (player1obj.turn == true) {
+		p1DefenseCtr.textContent = ++p1DefenseCount;
+	}
+	if (player2obj.turn == true) {
+		p2DefenseCtr.textContent = ++p2DefenseCount;
+	}
+});
+defdecrease.addEventListener("click", () => {
+	if (player1obj.turn == true) {
+		if (p1DefenseCount > 0) {
+			p1DefenseCtr.textContent = --p1DefenseCount;
+		}
+	}
+	if (player2obj.turn == true) {
+		if (p2DefenseCount > 0) {
+			p2DefenseCtr.textContent = --p2DefenseCount;
+		}
 	}
 });
 
