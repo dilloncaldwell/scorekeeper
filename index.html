@@ -278,12 +278,12 @@
 									<h2>Select A Game:</h2><br>
 									<div class="button-wrapper">
 										<div class="button">
-											<input type="radio" name="game-select" id="game-select-8"/>
+											<input tabindex="0" type="radio" name="game-select" id="game-select-8"/>
 											<label class="btn radiobtn" for="game-select-8">8-Ball</label>
 											
 										</div>
 										<div class="button">
-											<input type="radio" name="game-select" id="game-select-9"/>
+											<input tabindex="1" type="radio" name="game-select" id="game-select-9"/>
 											<label class="btn radiobtn" for="game-select-9">9-Ball</label>
 										</div>
 									</div>
@@ -292,11 +292,11 @@
 									<h2>Select Race Type:</h2><br>
 									<div class="button-wrapper">
 										<div class="button">
-											<input type="radio" name="race-option" id="single-race" checked="true">
+											<input tabindex="3" type="radio" name="race-option" id="single-race" checked="true">
 											<label class="btn radiobtn" for="single-race" >Single Race</label>
 										</div>
 										<div class="button">
-											<input type="radio" name="race-option" id="sl-race">
+											<input tabindex="4" type="radio" name="race-option" id="sl-race">
 											<label class="btn radiobtn" for="sl-race" >APA SL Race</label>
 										</div>
 									</div>
@@ -308,6 +308,7 @@
 									<div class="player-details-form">
 										<label>Player #1:</label>
 										<input
+										tabindex="5"
 											type="text"
 											name="player1-name"
 											id="single-player1-name"
@@ -319,6 +320,7 @@
 									<div class="player-details-form">
 										<label>Player #2:</label>
 										<input
+										tabindex="6"
 											type="text"
 											name="player2-name"
 											id="single-player2-name"
@@ -331,7 +333,7 @@
 								<div class="race-to">
 									<h2>Race To:</h2>
 									<label for="raceto">Games:</label>
-									<input type="number" name="race" id="raceto" placeholder="5">
+									<input tabindex="7" type="number" name="race" id="raceto" placeholder="5">
 							<p class="error" id="singleraceto"></p>
 								</div>
 								<div id="add-players">
@@ -340,6 +342,7 @@
 										<label>Player #1:</label>
 										<div class="forminputs">
 									<input
+									tabindex="5"
 										type="text"
 										name="player1-name"
 										id="player1-name"
@@ -347,6 +350,7 @@
 										enterkeyhint="next"
 									/>
 									<input
+									tabindex="6"
 										type="number"
 										name="player1-skill-level"
 										id="player1-skill-level"
@@ -359,6 +363,7 @@
 										<label>Player #2:</label>
 										<div class="forminputs">
 									<input
+									tabindex="7"
 										type="text"
 										name="player2-name"
 										id="player2-name"
@@ -366,6 +371,7 @@
 										enterkeyhint="next"
 									/>
 									<input
+									tabindex="8"
 										type="number"
 										name="player2-skill-level"
 										id="player2-skill-level"
