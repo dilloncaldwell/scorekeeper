@@ -1,12 +1,15 @@
 import Game from "./modules/Game.js";
 import Player, { player1obj, player2obj } from "./modules/Player.js";
 import getRaceFromSkillLevel from "./modules/getRaceFromSkillLevel.js";
+import addGameDetailsToMatchobj from "./modules/addGameDetailsToMatchObj.js";
+// import { addGamesToMatch } from "./modules/getRaceFromSkillLevel.js";
 import getPointsRaceFromSkillLevel from "./modules/getPointsRaceFromSkillLevel.js";
 import printBallsToHTML from "./modules/printBallstoHTML.js";
 import resetBalls from "./modules/resetBalls.js";
 import reset from "./modules/reset.js";
 import get9BallMP from "./modules/get9BallMP.js";
 import { TEST } from "./modules/tests.js";
+import { getCurrentMatchStats } from "./modules/getCurrentMatchStats.js";
 
 //------------------------------------------------------------
 //------------------------------------------------------------
@@ -46,7 +49,7 @@ const p1TimeOutCtr = document.querySelector("#p1TimeOutCtr");
 const p2TimeOutCtr = document.querySelector("#p2TimeOutCtr");
 const timeOutBtn = document.querySelector("#timeOutBtn");
 let inningCount = 0;
-const inningCtrBtn = document.querySelector("#inningCtrBtn");
+// const inningCtrBtn = document.querySelector("#inningCtrBtn");
 const inningCtr = document.querySelector("#inningCtr");
 const p1WinnerBtn = document.getElementById("p1winner");
 const p2WinnerBtn = document.getElementById("p2winner");
@@ -62,7 +65,7 @@ let GAMENUM = 1;
 let lagWinner = "";
 let ballsDiv = document.querySelector("#balls");
 let game = "";
-
+let Match = [];
 //--------------------
 // player details game
 //--------------------
@@ -206,11 +209,11 @@ startmatch.addEventListener("click", (e) => {
 		slp1r.textContent = player1obj.race;
 		slp2r.textContent = player2obj.race;
 		// create game instances
-		for (let i = 1; i <= singleRaceTo.value; i++) {
-			let game = new Game();
-			Match.push({ game });
-		}
-		console.log(Match);
+		// for (let i = 1; i <= singleRaceTo.value; i++) {
+		// 	let game = new Game();
+		// 	Match.push({ game });
+		// }
+		// console.log(Match);
 	}
 	if (slrace.checked) {
 		if (validateFormInputs("sl") === false) {
@@ -449,7 +452,13 @@ function incrementInnings(playerobj) {
 		}
 		inningCount++;
 		inningCtr.textContent = inningCount;
+		updateInningsCount(inningCount);
 	}
+}
+
+function updateInningsCount(inningCount) {
+	console.log("updated inning count: ", inningCount);
+	console.log(Match);
 }
 
 const increase = document.querySelector(".increase");
@@ -680,7 +689,7 @@ function player1Wins() {
 			player2obj.turn = false;
 			resetBalls(player1obj, player2obj);
 			isWinner(player1obj);
-			resetInnings();
+			// resetInnings();
 			resetPlayersScore();
 			player1Details.classList.remove("activeTurn");
 			player2Details.classList.remove("activeTurn");
@@ -693,7 +702,7 @@ function player1Wins() {
 			player1obj.turn = true;
 			player2obj.turn = false;
 			resetBalls(player1obj, player2obj);
-			resetInnings();
+			// resetInnings();
 			player2Details.classList.remove("activeTurn");
 			player1Details.classList.add("activeTurn");
 			player1obj.score = ++SCORE1;
@@ -701,7 +710,8 @@ function player1Wins() {
 			p1s.textContent = SCORE1;
 		}
 	} else if (
-		(player1obj.gameselect = "9ball" && player1obj.racetype == "sl")
+		player1obj.gameselect == "9ball" &&
+		player1obj.racetype == "sl"
 	) {
 		// console.log("game is sl race of 9-ball");
 		if (player1obj.points >= player1obj.race) {
@@ -717,7 +727,7 @@ function player1Wins() {
 			player1obj.turn = true;
 			player2obj.turn = false;
 			resetBalls(player1obj, player2obj);
-			resetInnings();
+			// resetInnings();
 			player2Details.classList.remove("activeTurn");
 			player1Details.classList.add("activeTurn");
 		}
@@ -740,7 +750,7 @@ function player2Wins() {
 			player2obj.turn = false;
 			resetBalls(player1obj, player2obj);
 			isWinner(player2obj);
-			resetInnings();
+			// resetInnings();
 			resetPlayersScore();
 			player1Details.classList.remove("activeTurn");
 			player2Details.classList.remove("activeTurn");
@@ -753,7 +763,7 @@ function player2Wins() {
 			player2obj.turn = true;
 			player1obj.turn = false;
 			resetBalls(player1obj, player2obj);
-			resetInnings();
+			// resetInnings();
 			player1Details.classList.remove("activeTurn");
 			player2Details.classList.add("activeTurn");
 			player2obj.score = ++SCORE2;
@@ -761,7 +771,8 @@ function player2Wins() {
 			p2s.textContent = SCORE2;
 		}
 	} else if (
-		(player2obj.gameselect = "9ball" && player2obj.racetype == "sl")
+		player2obj.gameselect == "9ball" &&
+		player2obj.racetype == "sl"
 	) {
 		// console.log("game is sl race of 9-ball");
 		if (player2obj.points >= player2obj.race) {
@@ -777,7 +788,7 @@ function player2Wins() {
 			player2obj.turn = true;
 			player1obj.turn = false;
 			resetBalls(player1obj, player2obj);
-			resetInnings();
+			// resetInnings();
 			player1Details.classList.remove("activeTurn");
 			player2Details.classList.add("activeTurn");
 		}
@@ -940,8 +951,12 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player wins
 			closePopup();
 			player1Wins();
+			addGameDetailsToMatchobj(player1obj);
 			updateGameNum();
 			resetAfterEachGame();
+
+			console.log(Match);
+			// console.log(Match[0][game]);
 			// console.log("pl wins..");
 		} else if (
 			early8.checked == true ||
@@ -951,6 +966,7 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player loses
 			closePopup();
 			player2Wins();
+			addGameDetailsToMatchobj(player2obj);
 			updateGameNum();
 			resetAfterEachGame();
 			// console.log("p1 losses so p2 wins..");
@@ -965,6 +981,7 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player wins
 			closePopup();
 			player2Wins();
+			addGameDetailsToMatchobj(player2obj);
 			updateGameNum();
 			resetAfterEachGame();
 		} else if (
@@ -975,6 +992,7 @@ confirmBtn.addEventListener("click", () => {
 			// if the current player loses
 			closePopup();
 			player1Wins();
+			addGameDetailsToMatchobj(player1obj);
 			updateGameNum();
 			resetAfterEachGame();
 		}
@@ -1016,6 +1034,7 @@ function resetAfterEachGame() {
 	player2obj.timeoutcount = 0;
 	p1TimeOutCtr.textContent = 0;
 	p2TimeOutCtr.textContent = 0;
+	resetInnings();
 	timeOutBtn.classList.remove("clicked");
 }
 
@@ -1067,7 +1086,7 @@ gamectr.textContent = "Game " + player1obj.gamenum;
 // create a game obj
 // --------------------------
 
-const Match = [];
+// const Match = [];
 
 //----------------------------------------------
 // balls made array update when ball is clicked
@@ -1145,6 +1164,7 @@ const exitStatsBtn = document.querySelector(".exitstatsbtn");
 viewStatsBtn.addEventListener("click", () => {
 	console.log("stats button clicked");
 	matchstats.classList.toggle("show");
+	getCurrentMatchStats();
 });
 
 exitStatsBtn.addEventListener("click", () => {
@@ -1172,7 +1192,7 @@ exitSettingsBtn.addEventListener("click", () => {
 resetScoreBoard.addEventListener("click", () => {
 	if (
 		confirm(
-			"Are you sure you want to restart the match all data will be lossed?"
+			"Are you sure you want to restart the match all data will be lost?"
 		)
 	) {
 		reset(inningCount, inningCtr);
@@ -1182,3 +1202,4 @@ resetScoreBoard.addEventListener("click", () => {
 });
 
 // do the skillLevelChart modal to javascript make a different page and import it so it doesn't bloat index
+export { Match, p1DefenseCount, p2DefenseCount, inningCount };

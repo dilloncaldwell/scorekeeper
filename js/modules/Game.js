@@ -9,5 +9,8 @@ export default class Game {
 		this.p2defense = 0;
 		this.p1timeouts = 0;
 		this.p2timeouts = 0;
+		this.p1score = 0;
+		this.p2score = 0;
+		this.gameinnings = 0;
 	}
 }

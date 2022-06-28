@@ -160,25 +160,25 @@ header button:hover {
 /* Accordian styles */
 /* ------------------------------- */
 
-#testing .row {
+.match-stats .row {
 	display: flex;
 }
-#testing .row .col {
+.match-stats .row .col {
 	flex: 1;
 }
 
-#testing .tabs {
+.match-stats .tabs {
 	/* border-radius: 8px; */
 	overflow: hidden;
 	box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
 }
 
-#testing .tab {
+.match-stats .tab {
 	width: 100%;
 	color: white;
 	overflow: hidden;
 }
-#testing .tab-label {
+.match-stats .tab-label {
 	display: flex;
 	justify-content: space-between;
 	padding: 1em;
@@ -188,10 +188,10 @@ header button:hover {
 	cursor: pointer;
 	/* Icon */
 }
-#testing .tab-label:hover {
+.match-stats .tab-label:hover {
 	background: rgb(34, 68, 101);
 }
-#testing .tab-label::after {
+.match-stats .tab-label::after {
 	content: "❯";
 	width: 1em;
 	height: 1em;
@@ -199,14 +199,14 @@ header button:hover {
 	/* transition: all 0.35s; */
 	z-index: 1;
 }
-#testing .tab-content {
+.match-stats .tab-content {
 	max-height: 0;
 	/* padding: 0 1em; */
 	color: rgb(34, 68, 101);
 	background: white;
 	/* transition: all 0.35s; */
 }
-#testing .tab-close {
+.match-stats .tab-close {
 	display: flex;
 	justify-content: flex-end;
 	padding: 1em;
@@ -214,21 +214,21 @@ header button:hover {
 	background: rgb(18, 36, 54);
 	cursor: pointer;
 }
-#testing .tab-close:hover {
+.match-stats .tab-close:hover {
 	background: #1a252f;
 }
-#testing input {
+.match-stats input {
 	position: absolute;
 	opacity: 0;
 	z-index: -1;
 }
-#testing input:checked + .tab-label {
+.match-stats input:checked + .tab-label {
 	background: rgb(34, 68, 101);
 }
-#testing input:checked + .tab-label::after {
+.match-stats input:checked + .tab-label::after {
 	transform: rotate(90deg);
 }
-#testing input:checked ~ .tab-content {
+.match-stats input:checked ~ .tab-content {
 	max-height: 100vh;
 	padding: 1em 0;
 	margin: 1em 0.5em;

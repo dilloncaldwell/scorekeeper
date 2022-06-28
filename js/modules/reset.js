@@ -3,6 +3,8 @@ import { player1obj, player2obj } from "./Player.js";
 import resetBalls from "./resetBalls.js";
 import removeBallsFromHTML from "../main.js";
 import { TEST } from "./tests.js";
+import { Match } from "../main.js";
+
 //--------------------------------
 // reset for Next Match Button
 //--------------------------------
@@ -97,6 +99,9 @@ function reset(inningCount, inningCtr) {
 	let p2TimeOutCount = 0;
 
 	TEST.testResetValues();
+
+	Match.length = 0;
+	document.querySelector(".match-stats").innerHTML = "";
 }
 
 export default reset;
