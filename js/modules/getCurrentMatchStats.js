@@ -5,9 +5,16 @@ let gameCount = 1;
 
 function getCurrentMatchStats() {
 	let matchGameNum = gameCount - 1;
+	console.log({ gameCount });
 
 	if (Match.length == 0) {
-		return;
+		if (Match.length == 0 && gameCount >= 1) {
+			gameCount = 1;
+			getCurrentMatchStats(); //left off here on to something
+		} else {
+			console.log("exit because match length is 0...");
+			return;
+		}
 	}
 	if (Match[matchGameNum] == undefined) {
 		return;
