@@ -8,7 +8,10 @@ function getCurrentMatchStats() {
 	console.log({ gameCount });
 
 	if (Match.length == 0) {
-		if (Match.length == 0 && gameCount > 1) {
+		if (gameCount === 1) {
+			return;
+		}
+		if (gameCount >= 1) {
 			gameCount = 1;
 			getCurrentMatchStats(); //left off here on to something-- seems to be working
 		} else {
