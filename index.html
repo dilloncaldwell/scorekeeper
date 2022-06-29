@@ -22,38 +22,31 @@
 				<button class="viewstats btn"><i class="fa-solid fa-bars-progress fa-xl"></i></button>
 			</div>
 		</header>
+
 		<div class="matchstats">
-			
 			<div class="matchstats-wrapper">
-				
 				<div class="matchstats-header">
 					<h2>Match Stats</h2>
 					<i class="exitstatsbtn fa-solid fa-xmark fa-xl"></i>
 				</div>
-				<div class="match-stats">
-
-				</div>
-				
-				
-				<div class="matchstats-details">
-					<!-- Game Details for 9 games -->
-				</div>
-			</div>
-		</div>
+				<div class="match-stats"></div>
+			</div> <!-- end .matchstats-wrapper -->
+		</div> <!-- end .matchstats-->
 		<div class="matchsettings">
 			<div class="matchsettings-wrapper">
 				<div class="matchsettings-header">
 					<h2>Game Settings</h2>
 					<i class="exitsettingsbtn fa-solid fa-xmark fa-xl"></i>
-				</div>
+				</div> <!-- end .matchsettings-header -->
 				<div class="matchsettings-details">
 					<ul>
 						<li>Settings</li>
 						
 					</ul>
-				</div>
-			</div>
-		</div>
+				</div> <!-- end .matchsettings-details -->
+			</div> <!-- end .matchsettings-wrapper-->
+		</div> <!-- end .matchsettings-->
+
 		<div class="app-wrapper">
 			<div class="match-details-container">
 				<div class="match-details-inner">
@@ -182,16 +175,16 @@
 							</div>
 						</div>
 			</div>
-			<!-- .match-details-container -->
+			<!-- end .match-details-container -->
 			<div id="scoreboard">
 				<div id="player1-details" class="player-details">
-					<div class="playerNum"><span class="player">Player #1</span><span id="p1lag"></span></div>
+					<div class="playerNum"><span class="player">Player #1</span><span id="p1lag"></span></div> <!-- end .playeNum -->
 					<div class="nameonscoreboard">
 						<h3 id="p1name">Player #1</h3>
-								<div class="p1skilllevel">
-							<p class="hideSingle">SL<br> <span id="p1sl"></span></p>
-						</div>
-							</div>
+							<div class="p1skilllevel">
+								<p class="hideSingle">SL<br> <span id="p1sl"></span></p>
+							</div> <!-- end .p1Skilllevel -->
+					</div> <!-- end .nameonscoreboard -->
 					<div class="p1-stats">
 						<div class="stats">
 							<span class="hide9andslrace">
@@ -207,63 +200,60 @@
 								<span id="p1TimeoutsAllowed">0</span>
 							</span>
 							<span>Defense:<br> <span id="p1DefenseCtr">0</span></span>
-						</div>
-					</div>
+						</div> <!-- end .stats -->
+					</div> <!-- end .p1-stats -->
 					<p class="ballsmade">
 						Balls Made:</br> <span id="p1MadeBalls"></span>
 					</p>
-				</div>
+				</div> <!-- end #player1-details -->
+				
 				<div class="scores">
-							<div class="gamenum">
-								<span id="gamectr"></span>
-							</div>
+					<div class="gamenum">
+						<span id="gamectr"></span>
+					</div> <!-- end .gamenum -->
 					<div class="playerscores">
 						<div class="playerscores hide9andslrace">
-									<div id="player1-score" class="playerscore">
-										<span id="p1-score">0</span>
-									</div>
-									<div class="playerscoredivider">|</div>
-									<div id="player2-score" class="playerscore">
-										<span id="p2-score">0</span>
-									</div>
-								</div>
+							<div id="player1-score" class="playerscore">
+								<span id="p1-score">0</span>
+							</div> <!-- end #player1-score -->
+							<div class="playerscoredivider">|</div>
+							<div id="player2-score" class="playerscore">
+								<span id="p2-score">0</span>
+							</div> <!-- end #player2-score -->
+						</div> <!-- end .playerscores -->
 						<div class="hideIf8Ball playerscores hideSingle">
-									<!-- if skill level race and 9ball, tracks points -->
-									<div id="player1-score-slr" class="playerscore">
-										<span id="p1-score-slr">0</span>
-									</div>
-									<div class="playerscoredivider">|</div>
-									<div id="player2-score-slr" class="playerscore">
-										<span id="p2-score-slr">0</span>
-									</div>
-								</div>
-					</div>
+							<!-- if skill level race and 9ball, tracks points -->
+							<div id="player1-score-slr" class="playerscore">
+								<span id="p1-score-slr">0</span>
+							</div> <!-- end #player1-score-slr -->
+							<div class="playerscoredivider">|</div>
+							<div id="player2-score-slr" class="playerscore">
+								<span id="p2-score-slr">0</span>
+							</div> <!-- end #player2-score-slr -->
+						</div> <!-- end .playerscores -->
+					</div> <!-- end .playerscores -->
 					<div class="innings">
 						<span>Innings:</span>
 						<span id="inningCtr">0</span>
 						<div class="inningupdater">
 							<button class="btn smallbtn decrease">-</button>
 							<button class="btn smallbtn increase">+</button>
-						</div>
-					</div>
-					<!-- <div class="shotclockdiv">
-						<span>Shot Clock:</span>
-						<span class="shotclock"></span>
-					</div> -->
+						</div> <!-- end .inningupdater -->
+					</div> <!-- end .innings-->
 							<div class="hideIf8Ball deadballs">
 								<span>Dead:</span>
 								<span id="deadballs"></span>
 								<!-- deadctr<span id="deadctr"></span> -->
-							</div>
-				</div>
+							</div> <!-- end .hideIf8Ball-->
+				</div> <!-- end #scores -->
 				<div id="player2-details" class="player-details">
-					<div class="playerNum"><span class="player">Player #2</span><span id="p2lag"></span></div>
+					<div class="playerNum"><span class="player">Player #2</span><span id="p2lag"></span></div> <!-- end .playerNum -->
 					<div class="nameonscoreboard">
 						<h3 id="p2name">Player #2</h3>
-								<div class="p2skilllevel">
+						<div class="p2skilllevel">
 							<p class="hideSingle">SL<br> <span id="p2sl"></span></p>
-						</div>
-							</div>
+						</div> <!-- end .p2skilllevel -->
+					</div> <!-- end .nameonscoreboard -->
 					<div class="p2-stats">
 						<div class="stats">
 							<span class="hide9andslrace">
@@ -279,14 +269,13 @@
 								<span id="p2TimeoutsAllowed">0</span>
 							</span>
 							<span>Defense:<br> <span id="p2DefenseCtr">0</span></span>
-						</div>
-					</div>
+						</div> <!-- end .stats -->
+					</div> <!-- end .p2-stats -->
 					<p class="ballsmade">
 						Balls Made:</br> <span id="p2MadeBalls"></span>
 					</p>
-				</div>
-			</div>
-			<!-- #scoreboard -->
+				</div> <!-- end #player2-details -->
+			</div> <!-- #scoreboard -->
 			<div id="winnerAlertMessage"></div>
 			<div id="button-container">
 				<div id="buttons">
@@ -296,8 +285,8 @@
 						<div class="defbuttonwrapper">
 							<button class="btn smallbtn defdecrease">-</button>
 							<button class="btn smallbtn defincrease">+</button>
-						</div>
-					</div>
+						</div> <!-- end .defbuttonwrapper -->
+					</div> <!-- end .defenseBtnGroup -->
 					<button id="timeOutBtn" class="btn hideSingle">
 						<span class="timeoutbtninfo">
 							<i class="fa-solid fa-hand fa-lg"></i>
@@ -307,10 +296,9 @@
 					</button>
 					<!-- <button>Fouls</button> -->
 					<button id="dead" class="btn hideIf8Ball"><i class="fa-solid fa-skull fa-lg"></i> <br>Deadball</button>
-				</div>
-				<!-- #buttons -->
+				</div> <!-- end #buttons -->
 				<div id="balls"></div>
-			</div>
+			</div> <!-- end #button-container -->
 					<div class="gameoverPopup">
 						<div class="gameoverPopupInner">
 							<div class="radio-buttons">
@@ -327,41 +315,41 @@
 									<div class="hideIf9Ball">
 										<input type="radio" name="gameover" id="eightOnB" value="Made 8-Ball on the Break">
 										<label for="eightOnB">Made 8-Ball on the Break</label><br>
-									</div>
+									</div> <!-- end .hideIf9Ball -->
 									<div class="hideIf8Ball">
 										<input type="radio" name="gameover" id="nineonSnap" value="Made 9-Ball on the Break">
 										<label for="nineonSnap">Made 9-Ball on the Break</label><br>
-									</div>
+									</div> <!-- end .hideIf8Ball -->
 								</div> <!-- End current player wins  -->
 								<div> <!-- Current Player Loses -->
 									<p class="hideIf9Ball" style="font-size: small; color:rgb(3, 41, 129);"><span class="currPlayerName"></span> Loses</p>
 									<div class="hideIf9Ball">
 										<input type="radio" name="gameover" id="early8" value="Made 8-Ball Early">
 										<label for="early8">Made 8-Ball Early</label><br>
-									</div>
+									</div> <!-- end .hideIf9Ball -->
 									<div class="hideIf9Ball">
 										<input type="radio" name="gameover" id="eightwrongpocket" value="Made 8-Ball in wrong pocket">
 										<label for="eightwrongpocket">Made 8-Ball in wrong pocket</label><br>
-									</div>
+									</div> <!-- end .hideIf9Ball -->
 									<div class="hideIf9Ball">
 										<input type="radio" name="gameover" id="scratchon8Ball" value="Scratch on 8-Ball">
 										<label for="scratchon8Ball">Scratch on 8-Ball</label><br>
-									</div> 
+									</div> <!-- end .hideIf9Ball -->
 								</div> <!-- End Current Player Loses -->
 							</div> <!-- End .radio-buttons -->
 							<div class="popup-buttons">
 								<button class="closeGameoverPopup btn">Close</button>
 								<button class="confirm btn">Confirm</button>
-							</div>
+							</div> <!-- end .popup-buttons -->
 						</div> <!-- End .gameoverPopupInner -->
 					</div> <!-- End .gameoverPopup -->
 					<div class="gameover">
 						<button id="gameoverBtn" class="btn">Game Over</button>
-					</div>
+					</div> <!-- end .gameover -->
 			<div class="reset">
 				<button id="reset" class="btn resetBtn">Reset Match</button>
-			</div>
-		</div>
+			</div> <!-- end .reset -->
+		</div> <!-- end .app-wrapper -->
 		<!-- <div id="skillLevelChart">
 			<h3>8-Ball APA Skill Level Handicap Chart</h3>
 			<table>
