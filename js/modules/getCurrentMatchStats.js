@@ -11,7 +11,7 @@ function getCurrentMatchStats() {
 		if (gameCount === 1) {
 			return;
 		}
-		if (gameCount >= 1) {
+		if (gameCount > 1) {
 			gameCount = 1;
 			getCurrentMatchStats(); //left off here on to something-- seems to be working
 		} else {
