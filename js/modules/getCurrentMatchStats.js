@@ -8,9 +8,9 @@ function getCurrentMatchStats() {
 	console.log({ gameCount });
 
 	if (Match.length == 0) {
-		if (Match.length == 0 && gameCount >= 1) {
+		if (Match.length == 0 && gameCount > 1) {
 			gameCount = 1;
-			getCurrentMatchStats(); //left off here on to something
+			getCurrentMatchStats(); //left off here on to something-- seems to be working
 		} else {
 			console.log("exit because match length is 0...");
 			return;
