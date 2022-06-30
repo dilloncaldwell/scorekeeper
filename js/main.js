@@ -1147,7 +1147,7 @@ exitSettingsBtn.addEventListener("click", () => {
 resetScoreBoard.addEventListener("click", () => {
 	if (
 		confirm(
-			"Are you sure you want to restart the match all data will be lost?"
+			"Are you sure you want to reset the match, all data will be lost?"
 		)
 	) {
 		reset(inningCount, inningCtr);
