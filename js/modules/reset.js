@@ -1,9 +1,12 @@
 import { resetPlayersScore } from "../main.js";
+import { resetDefenseCount } from "../main.js";
+import { resetMatchLength } from "../main.js";
 import { player1obj, player2obj } from "./Player.js";
 import resetBalls from "./resetBalls.js";
 import removeBallsFromHTML from "../main.js";
 import { TEST } from "./tests.js";
 import { Match } from "../main.js";
+import { getCurrentMatchStats } from "./getCurrentMatchStats.js";
 
 //--------------------------------
 // reset for Next Match Button
@@ -100,8 +103,12 @@ function reset(inningCount, inningCtr) {
 
 	TEST.testResetValues();
 
-	Match.length = 0;
+	// Match.length = 0;
+	resetMatchLength();
 	document.querySelector(".match-stats").innerHTML = "";
+
+	resetDefenseCount();
+	getCurrentMatchStats();
 }
 
 export default reset;

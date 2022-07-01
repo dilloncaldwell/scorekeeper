@@ -312,6 +312,14 @@ function capitalizeFirstLetter(string) {
 	return string[0].toUpperCase() + string.slice(1);
 }
 
+function resetDefenseCount() {
+	p1DefenseCount = 0;
+	p2DefenseCount = 0;
+}
+
+function resetMatchLength() {
+	Match.length = 0;
+}
 //----------------------------------
 // Create the balls & Print in HTML
 //----------------------------------
@@ -973,6 +981,8 @@ export function resetPlayersScore() {
 	player2obj.name = "Player 2";
 	player1obj.race = 0;
 	player2obj.race = 0;
+	player1obj.defense = 0;
+	player2obj.defense = 0;
 	player1obj.timeoutlimit = 0;
 	player2obj.timeoutlimit = 0;
 	player1obj.timeoutcount = 0;
@@ -1157,4 +1167,11 @@ resetScoreBoard.addEventListener("click", () => {
 });
 
 // do the skillLevelChart modal to javascript make a different page and import it so it doesn't bloat index
-export { Match, p1DefenseCount, p2DefenseCount, inningCount };
+export {
+	Match,
+	p1DefenseCount,
+	p2DefenseCount,
+	inningCount,
+	resetDefenseCount,
+	resetMatchLength,
+};
