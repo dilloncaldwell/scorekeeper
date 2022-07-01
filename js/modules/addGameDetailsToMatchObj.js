@@ -6,10 +6,6 @@ import { getCurrentMatchStats } from "./getCurrentMatchStats.js";
 function addGameDetailsToMatchobj(winner) {
 	let numOfGames = Match.length;
 	let gameNumber = winner.gamenum;
-	// console.log({ Match });
-	// console.log({ numOfGames });
-	// console.log({ gameNumber });
-	// console.log({ winner });
 	let winnerName = "";
 	if (winner == player1obj) {
 		winnerName = player1obj.name;

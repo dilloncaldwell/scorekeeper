@@ -238,6 +238,11 @@ header button:hover {
 /* End Accordian styles */
 /* ------------------------------- */
 
+.no-games-played-stats-p {
+	margin: 1em;
+	text-align: center;
+}
+
 .show {
 	visibility: visible;
 	transition: all 1s ease-in;

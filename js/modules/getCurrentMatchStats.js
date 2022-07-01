@@ -5,15 +5,19 @@ let gameCount = 1;
 
 function getCurrentMatchStats() {
 	let matchGameNum = gameCount - 1;
-	console.log({ gameCount });
+	// console.log({ gameCount });
+	const matchStats = document.querySelector(".match-stats");
 
 	if (Match.length == 0) {
 		if (gameCount === 1) {
+			matchStats.innerHTML =
+				'<p class="no-games-played-stats-p">No games played yet. Check back later.</p>';
+
 			return;
 		}
 		if (gameCount > 1) {
 			gameCount = 1;
-			getCurrentMatchStats(); //left off here on to something-- seems to be working
+			getCurrentMatchStats();
 		} else {
 			console.log("exit because match length is 0...");
 			return;
@@ -22,8 +26,8 @@ function getCurrentMatchStats() {
 	if (Match[matchGameNum] == undefined) {
 		return;
 	}
+	document.querySelector(".no-games-played-stats-p").style.display = "none";
 
-	const matchStats = document.querySelector(".match-stats");
 	//create elements
 	let row = document.createElement("div");
 	row.className = "row";
