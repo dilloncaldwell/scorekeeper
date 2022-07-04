@@ -68,7 +68,7 @@ function getCurrentMatchStats() {
 		gameStats.innerHTML += `<div class="gamestats">
                                 <span>Players:</span>
                                 <span class="hideIf8Ball hideIf9BallSingle">Points:</span><span class="hideIf9Ball">Score:</span>
-                                <span>Timeouts:</span>
+                                <span class="timeout">Timeouts:</span>
                                 <span>Defense:</span>
                                 <span>Fouls:</span>
                             </div>`;
@@ -76,7 +76,7 @@ function getCurrentMatchStats() {
 		gameStats.innerHTML += `<div class="p1gamestats">
                                 ${player1obj.name}
                                 <span><span class="hideIf8Ball hideIf9BallSingle">${Match[matchGameNum].p1points}</span><span class="hideIf9Ball">${Match[matchGameNum].p1score}</span>/${player1obj.race}</span>
-                                <span>${Match[matchGameNum].p1timeouts}/${player1obj.timeoutlimit}</span>
+                                <span class="timeout">${Match[matchGameNum].p1timeouts}/${player1obj.timeoutlimit}</span>
                                 <span>${Match[matchGameNum].p1defense}</span>
                                 <span>${Match[matchGameNum].p1fouls}</span>
                             </div>`;
@@ -84,7 +84,7 @@ function getCurrentMatchStats() {
 		gameStats.innerHTML += `<div class="p2gamestats">
                                 ${player2obj.name}
                                 <span><span class="hideIf8Ball hideIf9BallSingle">${Match[matchGameNum].p2points}</span><span class="hideIf9Ball">${Match[matchGameNum].p2score}</span>/${player2obj.race}</span>
-                                <span>${Match[matchGameNum].p2timeouts}/${player2obj.timeoutlimit}</span>
+                                <span class="timeout">${Match[matchGameNum].p2timeouts}/${player2obj.timeoutlimit}</span>
                                 <span>${Match[matchGameNum].p2defense}</span>
                                 <span>${Match[matchGameNum].p2fouls}</span>
                             </div>`;
@@ -93,7 +93,6 @@ function getCurrentMatchStats() {
                                 <span>Winner is <span>${Match[matchGameNum].winner}</span>!</span>
                                 <span>Innings: ${Match[matchGameNum].gameinnings}</span>
                             </div>`;
-
 		if (player1obj.racetype == "sl") {
 			if (player1obj.gameselect == "8ball") {
 				const if8Ball = document.querySelectorAll(".hideIf8Ball");
@@ -127,6 +126,10 @@ function getCurrentMatchStats() {
 					element.style.display = "none";
 				});
 			}
+			let timeouts = document.querySelectorAll(".timeout");
+			timeouts.forEach((div) => {
+				div.style.display = "none";
+			});
 		}
 
 		gameCount++;
