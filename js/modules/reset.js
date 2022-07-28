@@ -4,7 +4,7 @@ import { resetMatchLength } from "../main.js";
 import { player1obj, player2obj } from "./Player.js";
 import resetBalls from "./resetBalls.js";
 import removeBallsFromHTML from "../main.js";
-import { TEST } from "./tests.js";
+
 import { Match } from "../main.js";
 import { getCurrentMatchStats } from "./getCurrentMatchStats.js";
 
@@ -100,8 +100,6 @@ function reset(inningCount, inningCtr) {
 	timeOutBtn.classList.remove("clicked");
 	let p1TimeOutCount = 0;
 	let p2TimeOutCount = 0;
-
-	TEST.testResetValues();
 
 	// Match.length = 0;
 	resetMatchLength();

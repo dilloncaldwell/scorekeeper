@@ -7,7 +7,7 @@ import printBallsToHTML from "./modules/printBallstoHTML.js";
 import resetBalls from "./modules/resetBalls.js";
 import reset from "./modules/reset.js";
 import get9BallMP from "./modules/get9BallMP.js";
-import { TEST } from "./modules/tests.js";
+
 import { getCurrentMatchStats } from "./modules/getCurrentMatchStats.js";
 
 //------------------------------------------------------------
@@ -305,7 +305,7 @@ startmatch.addEventListener("click", (e) => {
 		});
 	}
 
-	TEST.getPlayerInfo("starting match...");
+	console.log("starting match...");
 });
 
 function capitalizeFirstLetter(string) {
@@ -484,7 +484,7 @@ function toggleActiveClass() {
 	player2Details.classList.toggle("activeTurn");
 }
 switchPlayer.addEventListener("click", (e) => {
-	TEST.getPlayerInfo("player switch");
+	console.log("player switch");
 	let p1TimeoutLimit = player1obj.timeoutlimit;
 	let p2TimeoutLimit = player2obj.timeoutlimit;
 	endTimer();
@@ -997,7 +997,7 @@ export function resetPlayersScore() {
 	deadBallsArray.length = 0;
 	deadballsspan.textContent = "";
 
-	TEST.getPlayerInfo("reseting player stats...");
+	console.log("reseting player stats...");
 }
 
 function resetAfterEachGame() {
